@@ -28,3 +28,5 @@ extends Resource
 @export var fire_sound: String = "pistol_fire"
 @export var viewmodel_color: Color = Color(0.2, 0.22, 0.25)
 @export var emissive_accent_color: Color = Color(0.1, 0.7, 1.0)
+
+## Data resource defining weapon ballistics, audio, recoil, and 3D mesh offsets
