@@ -177,3 +177,5 @@ func _clean_active_zombies() -> void:
 ## Wave director managing undead horde pacing, spawn zones, and escalation
 
 # Zombie count formula: 6 + round_number * 4 with geometric speed scaling
+
+# Spawn zones evaluate distance to player and cull occluded wilderness spawners
