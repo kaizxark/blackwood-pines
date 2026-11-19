@@ -55,3 +55,5 @@ func _update_prompt() -> void:
 func get_interaction_prompt(_player: CharacterBody3D) -> String:
 	if is_unlocked: return ""
 	return "[E] OPEN DOOR - %d PTS" % cost
+
+# Clearing debris barrier costs 750 PTS and frees navigation pathway to outer zones
