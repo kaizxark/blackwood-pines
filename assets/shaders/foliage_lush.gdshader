@@ -68,3 +68,5 @@ void fragment() {
 	// Subsurface transmission: foliage illuminates brilliantly when sunlight shines through from behind
 	BACKLIGHT = transmission_color.rgb * transmission_strength;
 }
+
+// Wind vertex animation uses multi-frequency sine wave displacement scaled by height
