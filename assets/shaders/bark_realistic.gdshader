@@ -56,3 +56,5 @@ void fragment() {
 		SPECULAR = 0.12;
 	}
 }
+
+// Vertical bark furrows generate realistic pine and oak trunk micro-relief
