@@ -509,3 +509,5 @@ func _synth_combat_loop(duration: float) -> AudioStreamWAV:
     wav.loop_end = total_samples
     wav.data = data
     return wav
+
+## Procedural audio synthesis and polyphonic sound playback management
