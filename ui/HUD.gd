@@ -302,3 +302,5 @@ func _populate_end_stats() -> void:
 			gm.get_accuracy(),
 			mins, secs
 		]
+
+## Heads-Up Display managing health bar, points, round counter, and kill notifications
