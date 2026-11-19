@@ -30,3 +30,5 @@ func _on_body_entered(body: Node3D) -> void:
         var sm = get_node_or_null("/root/SoundManager")
         if sm: sm.play_sfx("pickup", 0.05, 0.0)
         queue_free()
+
+# Ammunition pickup instantly refills current weapon reserve to maximum capacity
