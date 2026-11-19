@@ -433,3 +433,5 @@ func _process_death_drift(delta: float) -> void:
 ## Undead NPC controller with navmesh pathfinding, dismemberment, and gore
 
 # Navigation agent path updates periodically every 0.25s toward player coordinates
+
+# Claw melee attack executes within 1.6m range with a 0.35s wind-up anticipation
