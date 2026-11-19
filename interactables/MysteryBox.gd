@@ -166,3 +166,5 @@ func get_interaction_prompt(_player: CharacterBody3D) -> String:
 			return "[E] TAKE [%s]" % [selected_weapon.weapon_name if selected_weapon else "WEAPON"]
 		_:
 			return ""
+
+## Mystery weapon roulette crate with randomized draws and vertical light beam
