@@ -799,3 +799,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # Muzzle flash OmniLight3D energizes for 0.05s on primary discharge
 
 # Bullet tracers interpolate glowing cylinder mesh along hitscan trajectory
+
+# Ammo refill purchase caps reserve ammo at weapon_resource.max_reserve_ammo
