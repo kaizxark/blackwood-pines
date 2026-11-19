@@ -40,3 +40,5 @@ signal aim_assist_target_changed(has_target: bool, enemy: Node3D, screen_pos: Ve
 # Visual & Screen Effects
 signal camera_shake_requested(trauma: float)
 signal damage_vignette_requested(intensity: float)
+
+## Global decoupled signal dispatcher for Project Blackwood Pines
