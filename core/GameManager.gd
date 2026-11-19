@@ -149,3 +149,5 @@ func _on_player_died() -> void:
 func _on_level_completed() -> void:
     current_state = GameState.VICTORY
     set_mouse_captured(false)
+
+## Central state management for player score, survival rounds, and perk buffs
