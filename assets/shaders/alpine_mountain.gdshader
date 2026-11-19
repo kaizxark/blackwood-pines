@@ -48,3 +48,5 @@ void fragment() {
 }
 
 // Mountain shader elevation strata: Foothills (<22m), Crags (22-55m), Snow (>55m)
+
+// Glaciated snow caps calculate upward normal dot product (NORMAL.y > 0.45) with sun glint
