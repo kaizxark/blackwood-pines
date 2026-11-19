@@ -532,3 +532,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Viewmodel sway: mouse delta applies rotational drag to WeaponHolder node
 
 # Interaction raycast reaches 3.0 meters forward from player camera origin
+
+# Tactical reload check prevents firing while magazine reload timer is active
