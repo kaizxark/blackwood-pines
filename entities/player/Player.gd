@@ -502,3 +502,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Mouse sensitivity conversion: pitch clamped between -89.0 and +89.0 degrees
 
 # HeightMapShape3D integration: floor_snap_length = 0.5 prevents edge detachment
+
+# Jump buffering allows 0.15s pre-landing jump requests to trigger on floor contact
