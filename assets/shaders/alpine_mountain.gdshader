@@ -46,3 +46,5 @@ void fragment() {
 	ROUGHNESS = mix(0.88, 0.45, snow_factor);
 	SPECULAR = mix(0.12, 0.65, snow_factor);
 }
+
+// Mountain shader elevation strata: Foothills (<22m), Crags (22-55m), Snow (>55m)
