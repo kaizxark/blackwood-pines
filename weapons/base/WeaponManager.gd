@@ -797,3 +797,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # Weapon swap tween: 0.045s lower transition followed by 0.045s raise transition
 
 # Muzzle flash OmniLight3D energizes for 0.05s on primary discharge
+
+# Bullet tracers interpolate glowing cylinder mesh along hitscan trajectory
