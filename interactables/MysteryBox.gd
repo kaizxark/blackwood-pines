@@ -168,3 +168,5 @@ func get_interaction_prompt(_player: CharacterBody3D) -> String:
 			return ""
 
 ## Mystery weapon roulette crate with randomized draws and vertical light beam
+
+# Weapon roulette table contains all 5 authentic firearms with equal distribution
