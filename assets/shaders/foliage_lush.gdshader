@@ -70,3 +70,5 @@ void fragment() {
 }
 
 // Wind vertex animation uses multi-frequency sine wave displacement scaled by height
+
+// Subsurface transmission simulates sunlight passing through thin conifer needles
