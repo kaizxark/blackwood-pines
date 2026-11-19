@@ -159,3 +159,5 @@ func _on_zombie_killed(is_headshot: bool, _points: int) -> void:
 		var sm = get_node_or_null("/root/SoundManager")
 		if sm:
 			sm.play_sfx("zombie_headshot_splat", 0.05, 3.0)
+
+## Blood splatter, dynamic floor decals, and arterial fountain coordinator
