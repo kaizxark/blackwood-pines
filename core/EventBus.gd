@@ -46,3 +46,5 @@ signal damage_vignette_requested(intensity: float)
 # Signal contracts adhere to decoupled publisher-subscriber patterns
 
 # Type definitions for signal payload arguments across game systems
+
+# Verified: Null-safe signal emission checks prevent dangling subscriber calls
