@@ -66,3 +66,5 @@ void fragment() {
 }
 
 // Triplanar projection blends mossy forest floor on flat terrain and granite on steep slopes
+
+// Normal perturbations combine low-frequency hills with high-frequency dirt grit
