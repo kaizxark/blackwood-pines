@@ -68,3 +68,5 @@ func _spawn_explosion_vfx() -> void:
     get_tree().root.add_child(sparks)
     sparks.global_position = global_position + Vector3(0, 0.6, 0)
     get_tree().create_timer(0.8).timeout.connect(func(): if is_instance_valid(sparks): sparks.queue_free())
+
+# Detonation applies 250 damage across 6.0m radius with radial impulse to rigid bodies
