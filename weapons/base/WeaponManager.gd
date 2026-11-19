@@ -787,3 +787,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 ## First-person weapon inventory manager, switching animations, and ballistics
 
 # Starting arsenal: Slot 0 M1911, Slot 1 Remington 870, Slot 2 AK47, Slot 3 M4A1, Slot 4 Python
+
+# Mouse wheel input: cycle_weapon(-1) scrolls up, cycle_weapon(1) scrolls down
