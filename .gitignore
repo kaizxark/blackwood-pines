@@ -12,3 +12,7 @@ scratch/
 .DS_Store
 Thumbs.db
 
+
+# Build and packaging output
+build/
+*.pck
