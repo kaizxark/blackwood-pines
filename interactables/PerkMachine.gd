@@ -120,3 +120,5 @@ func get_interaction_prompt(_player: CharacterBody3D) -> String:
 	if gm and gm.has_perk(perk_id):
 		return "[%s - ACTIVE]" % perk_display_name.to_upper()
 	return "[E] BUY %s - %d PTS" % [perk_display_name, perk_cost]
+
+## Perk-a-Cola vending machine granting passive stat boosts upon purchase
