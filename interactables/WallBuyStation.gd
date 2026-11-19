@@ -95,3 +95,5 @@ func get_interaction_prompt(player: CharacterBody3D) -> String:
 # Chalk outline rendered with additive emissive shader for night visibility
 
 # Purchase logic: if player has weapon -> refill ammo for 250 PTS, else purchase weapon
+
+# Prompt string formats dynamic cost and weapon name for HUD interaction overlay
