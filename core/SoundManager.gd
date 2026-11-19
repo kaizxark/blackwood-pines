@@ -511,3 +511,5 @@ func _synth_combat_loop(duration: float) -> AudioStreamWAV:
     return wav
 
 ## Procedural audio synthesis and polyphonic sound playback management
+
+# AudioStreamPlayer3D pool automatically recycles inactive audio nodes
