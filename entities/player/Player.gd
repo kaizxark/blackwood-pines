@@ -498,3 +498,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 ## First-person kinematic character body with physical spring recoil
 
 # 2nd-order damped harmonic spring model: pos += vel*dt, vel += (target-pos)*k - vel*d
+
+# Mouse sensitivity conversion: pitch clamped between -89.0 and +89.0 degrees
