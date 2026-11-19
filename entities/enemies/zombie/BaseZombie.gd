@@ -437,3 +437,5 @@ func _process_death_drift(delta: float) -> void:
 # Claw melee attack executes within 1.6m range with a 0.35s wind-up anticipation
 
 # Headshot damage triggers decapitation: head mesh hidden and blood fountain spawned
+
+# Arterial blood spurt continuously erupts from severed neck stub for 3.0 seconds
