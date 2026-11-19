@@ -522,3 +522,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # CharacterBody3D slide collision processing handles terrain slope normals
 
 # Player death sequence triggers camera tilt and notifies GameManager game over
+
+# Input actions: move_forward, move_backward, move_left, move_right, jump, sprint
