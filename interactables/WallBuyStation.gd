@@ -93,3 +93,5 @@ func get_interaction_prompt(player: CharacterBody3D) -> String:
 ## Interactive chalk wall outline station for weapon purchase and ammunition refill
 
 # Chalk outline rendered with additive emissive shader for night visibility
+
+# Purchase logic: if player has weapon -> refill ammo for 250 PTS, else purchase weapon
