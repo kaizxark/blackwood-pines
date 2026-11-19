@@ -528,3 +528,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Code structure: 1. Setup -> 2. Physics Process -> 3. Input -> 4. Combat
 
 # Type safety: move_and_slide return value handled by engine CharacterBody3D
+
+# Viewmodel sway: mouse delta applies rotational drag to WeaponHolder node
