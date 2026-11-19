@@ -530,3 +530,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Type safety: move_and_slide return value handled by engine CharacterBody3D
 
 # Viewmodel sway: mouse delta applies rotational drag to WeaponHolder node
+
+# Interaction raycast reaches 3.0 meters forward from player camera origin
