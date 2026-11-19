@@ -22,3 +22,5 @@ func _on_body_entered(body: Node3D) -> void:
     if body.has_method("heal") and body.get("current_health") < body.get("max_health"):
         body.heal(heal_amount)
         queue_free()
+
+# First-aid kit restores up to 50 HP without exceeding current max health ceiling
