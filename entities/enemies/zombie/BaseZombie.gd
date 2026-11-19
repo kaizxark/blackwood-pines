@@ -429,3 +429,5 @@ func _process_death_drift(delta: float) -> void:
     velocity.x = move_toward(velocity.x, 0.0, 15.0 * delta)
     velocity.z = move_toward(velocity.z, 0.0, 15.0 * delta)
     move_and_slide()
+
+## Undead NPC controller with navmesh pathfinding, dismemberment, and gore
