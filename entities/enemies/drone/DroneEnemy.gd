@@ -90,3 +90,5 @@ func _on_body_entered(body: Node):
     projectile.set("move_dir", dir)
     projectile.set("damage", attack_damage)
     projectile.connect("body_entered", Callable(projectile, "_on_body_entered"))
+
+## Aerial scout drone with sinusoidal hover physics and plasma weapon tracking
