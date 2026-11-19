@@ -52,3 +52,5 @@ func _fire_burst_shot() -> void:
         get_tree().create_timer(0.12).timeout.connect(_fire_burst_shot)
     else:
         is_bursting = false
+
+# Cyber-trooper tactical behavior: seeks cover and discharges 3-round rifle bursts
