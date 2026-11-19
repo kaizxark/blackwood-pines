@@ -44,3 +44,5 @@ signal damage_vignette_requested(intensity: float)
 ## Global decoupled signal dispatcher for Project Blackwood Pines
 
 # Signal contracts adhere to decoupled publisher-subscriber patterns
+
+# Type definitions for signal payload arguments across game systems
