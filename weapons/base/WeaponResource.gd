@@ -32,3 +32,5 @@ extends Resource
 ## Data resource defining weapon ballistics, audio, recoil, and 3D mesh offsets
 
 # Damage drop-off parameters: maximum effective range before linear damage attenuation
+
+# Base spread angle in degrees; multiplied by 0.25 when aim-down-sights is active
