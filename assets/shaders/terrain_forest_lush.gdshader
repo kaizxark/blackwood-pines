@@ -64,3 +64,5 @@ void fragment() {
 	ROUGHNESS = mix(base_roughness, 0.04, puddle_mask);
 	SPECULAR = mix(0.15, 0.95, puddle_mask);
 }
+
+// Triplanar projection blends mossy forest floor on flat terrain and granite on steep slopes
