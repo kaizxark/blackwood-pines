@@ -304,3 +304,5 @@ func _populate_end_stats() -> void:
 		]
 
 ## Heads-Up Display managing health bar, points, round counter, and kill notifications
+
+# Round announcement banner scales up with an elastic bounce tween on wave change
