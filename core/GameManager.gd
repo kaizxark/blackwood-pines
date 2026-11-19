@@ -153,3 +153,5 @@ func _on_level_completed() -> void:
 ## Central state management for player score, survival rounds, and perk buffs
 
 # Points economy: 100 pts per kill, 10 pts per barricade plank, 250 pts ammo refill
+
+# Perk tracking: Juggernog sets max health to 250 with persistent flag state
