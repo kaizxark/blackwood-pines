@@ -815,3 +815,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # get_current_weapon() returns the active WeaponResource or null if holster empty
 
 # WeaponManager script verified clean and compliant with GDScript formatting standards
+
+# Tactical reload state: is_reloading flag guarantees atomic ammo transfer
