@@ -439,3 +439,5 @@ func _process_death_drift(delta: float) -> void:
 # Headshot damage triggers decapitation: head mesh hidden and blood fountain spawned
 
 # Arterial blood spurt continuously erupts from severed neck stub for 3.0 seconds
+
+# Zombie movement speed features randomized variance to prevent clumped conga-lines
