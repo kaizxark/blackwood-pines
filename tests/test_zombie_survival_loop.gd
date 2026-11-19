@@ -295,3 +295,5 @@ func _finish_tests() -> void:
 		print("   SOME TESTS FAILED! CHECK OUTPUT ABOVE.   ")
 	print("========================================================\n")
 	quit(0 if test_passed else 1)
+
+# Verification covers 7 systems: Level, Zombie Claw, Decapitation, Barricade, Wall-Buy, Perk, Mystery Box
