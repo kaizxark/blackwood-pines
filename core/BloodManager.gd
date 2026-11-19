@@ -161,3 +161,5 @@ func _on_zombie_killed(is_headshot: bool, _points: int) -> void:
 			sm.play_sfx("zombie_headshot_splat", 0.05, 3.0)
 
 ## Blood splatter, dynamic floor decals, and arterial fountain coordinator
+
+# High-velocity arterial blood spurt physics applied during headshot decapitations
