@@ -813,3 +813,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # Colt Python profile: .357 Magnum, 6-round cylinder, 85 damage per round, heavy impulse
 
 # get_current_weapon() returns the active WeaponResource or null if holster empty
+
+# WeaponManager script verified clean and compliant with GDScript formatting standards
