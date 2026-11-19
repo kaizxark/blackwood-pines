@@ -783,3 +783,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
     grip.position = Vector3(0.0, -0.08, -0.02)
     grip.rotation.x = deg_to_rad(18.0)
     root_node.add_child(grip)
+
+## First-person weapon inventory manager, switching animations, and ballistics
