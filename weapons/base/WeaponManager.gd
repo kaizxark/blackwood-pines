@@ -805,3 +805,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # M1911 profile: .45 ACP, 7-round magazine, 35 damage per shot, high precision
 
 # Remington 870 profile: 12-gauge, 8 pellets per shell, 22 damage per pellet
+
+# AK-47 profile: 7.62x39mm, 600 RPM, 45 damage per shot, moderate vertical drift
