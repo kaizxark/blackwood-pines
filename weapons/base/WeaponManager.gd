@@ -791,3 +791,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # Mouse wheel input: cycle_weapon(-1) scrolls up, cycle_weapon(1) scrolls down
 
 # Quick-switch (Q) restores previous weapon slot index with zero latency delay
+
+# Number keys 1-5 map directly to slot indices 0 through 4
