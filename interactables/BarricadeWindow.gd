@@ -150,3 +150,5 @@ func get_interaction_prompt(_player: CharacterBody3D = null) -> String:
 # Zombies tear down 1 plank every 1.8 seconds; player repairs 1 plank per E press
 
 # Each repaired plank awards +10 PTS to player score via EventBus signal
+
+# Static collision shape disables when 0 planks remain to allow zombie traversal
