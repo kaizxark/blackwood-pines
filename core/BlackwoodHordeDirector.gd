@@ -179,3 +179,5 @@ func _clean_active_zombies() -> void:
 # Zombie count formula: 6 + round_number * 4 with geometric speed scaling
 
 # Spawn zones evaluate distance to player and cull occluded wilderness spawners
+
+# Active zombie cap throttles concurrent instances to preserve 60 FPS performance
