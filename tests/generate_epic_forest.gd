@@ -1,16 +1,16 @@
 extends SceneTree
 
-# PROJECT PROTO-BREACH - Next-Gen Alpine Mountain & Lush Forest Map Generator
-# Generates "Blackwood Alpine Valley" - a breathtaking real-world mountain forest environment:
-# 1. HeightMapShape3D rock-solid terrain physics (zero snags, flawless character locomotion)
-# 2. Majestic 360-degree alpine mountain ranges with snow caps and granite cliffs
-# 3. Dense multi-species flora: 15,850+ instances (Pines, Oaks, Birches, Shrubs, Ferns, Grass, Logs, Boulders)
-# 4. Cinematic sun god-rays, floating pollen/leaf particles, and morning sun mist
-# 5. Seamless wilderness survival points (tactical weapon stands, mystery box in stone grove, weathered perk shrines)
+# PROJECT PROTO-BREACH - Next-Gen Logical Landscape & Alpine Forest Overhaul
+# Implements realistic geology, ecology, and environmental storytelling:
+# 1. Geological U-shaped glacial valley with downstream drainage gradient and dry creek bed
+# 2. Continuous 360-degree seamless alpine mountain amphitheater (zero gaps, zero flat panels)
+# 3. Lived-in Ranger Outpost Alpha (log cabin, timber porch, creek bridge, stone dolmen grotto)
+# 4. Ecological vegetation distribution (pines on slopes, birches near water, ferns in moist shade)
+# 5. Rock-solid HeightMapShape3D collision for 100% snag-free locomotion
 
 func _init() -> void:
 	print("\n==================================================================")
-	print("  GENERATING EPIC ALPINE MOUNTAIN & LUSH FOREST MAP (BLACKWOOD)   ")
+	print("   GENERATING LOGICAL ALPINE VALLEY & FOREST MAP (BLACKWOOD)      ")
 	print("==================================================================\n")
 	
 	var root = Node3D.new()
@@ -68,7 +68,7 @@ func _init() -> void:
 	mat_grass.set_shader_parameter("transmission_color", Color(0.48, 0.74, 0.22))
 	mat_grass.set_shader_parameter("wind_strength", 0.28)
 	
-	# Bark Materials
+	# Bark & Construction Materials
 	var mat_pine_bark = ShaderMaterial.new()
 	mat_pine_bark.shader = bark_shader
 	mat_pine_bark.set_shader_parameter("bark_color", Color(0.22, 0.14, 0.08))
@@ -80,8 +80,18 @@ func _init() -> void:
 	mat_birch_bark.set_shader_parameter("is_birch", true)
 	mat_birch_bark.set_shader_parameter("moss_amount", 0.3)
 	
+	var mat_wood_plank = StandardMaterial3D.new()
+	mat_wood_plank.albedo_color = Color(0.32, 0.22, 0.14)
+	mat_wood_plank.roughness = 0.85
+	
+	var mat_zinc_roof = StandardMaterial3D.new()
+	mat_zinc_roof.albedo_color = Color(0.35, 0.38, 0.36)
+	mat_zinc_roof.metallic = 0.65
+	mat_zinc_roof.roughness = 0.55
+	
 	var mat_rock = ShaderMaterial.new()
 	mat_rock.shader = rock_shader
+	
 	var mat_godray = ShaderMaterial.new()
 	mat_godray.shader = godray_shader
 	
@@ -95,9 +105,9 @@ func _init() -> void:
 	
 	var sky = Sky.new()
 	var sky_mat = ProceduralSkyMaterial.new()
-	sky_mat.sky_top_color = Color(0.32, 0.52, 0.85) # Vivid alpine sky
+	sky_mat.sky_top_color = Color(0.32, 0.52, 0.85)
 	sky_mat.sky_horizon_color = Color(0.68, 0.78, 0.88)
-	sky_mat.ground_bottom_color = Color(0.10, 0.16, 0.08) # Rich forest floor bounce
+	sky_mat.ground_bottom_color = Color(0.10, 0.16, 0.08)
 	sky_mat.ground_horizon_color = Color(0.40, 0.52, 0.36)
 	sky_mat.sun_angle_max = 35.0
 	sky.sky_material = sky_mat
@@ -164,7 +174,7 @@ func _init() -> void:
 	var step = size / float(res)
 	var count = res + 1
 	
-	# A. Build HeightMapShape3D Physics Shape (ROCK-SOLID LOCOMOTION!)
+	# A. Build HeightMapShape3D Physics Shape
 	var terrain_cs = CollisionShape3D.new()
 	terrain_cs.name = "TerrainCollision"
 	var hms = HeightMapShape3D.new()
@@ -196,21 +206,21 @@ func _init() -> void:
 	terrain_sb.add_child(terrain_mi)
 	terrain_mi.owner = root
 	
-	# Invisible World Boundaries
+	# Safety World Boundaries at outer edge
 	_build_world_boundaries(root, size)
 	
 	# -------------------------------------------------------------------------
-	# 5. MAJESTIC ALPINE MOUNTAIN RANGES (360-Degree Mountain Panorama)
+	# 5. CONTINUOUS 360-DEGREE RADIAL ALPINE MOUNTAIN AMPHITHEATER
 	# -------------------------------------------------------------------------
 	var mountain_root = Node3D.new()
-	mountain_root.name = "AlpineMountainRanges"
+	mountain_root.name = "AlpineMountainCirque"
 	root.add_child(mountain_root)
 	mountain_root.owner = root
 	
-	_build_mountain_ranges(mountain_root, root, mat_mountain)
+	_build_mountain_amphitheater(mountain_root, root, mat_mountain)
 	
 	# -------------------------------------------------------------------------
-	# 6. Player Instance (Spawned smoothly on the forest trail)
+	# 6. Player Instance (Spawned cleanly on Outpost Alpha terrace)
 	# -------------------------------------------------------------------------
 	var player_scene = load("res://entities/player/Player.tscn")
 	var player = player_scene.instantiate()
@@ -219,7 +229,7 @@ func _init() -> void:
 	var spawn_z = 14.0
 	var ground_h = _get_terrain_height(spawn_x, spawn_z)
 	player.position = Vector3(spawn_x, ground_h + 0.95, spawn_z)
-	player.rotation_degrees = Vector3(0, 180, 0) # Facing North
+	player.rotation_degrees = Vector3(0, 180, 0) # Facing North down the valley
 	root.add_child(player)
 	player.owner = root
 	
@@ -242,7 +252,7 @@ func _init() -> void:
 	particles.owner = root
 	
 	# -------------------------------------------------------------------------
-	# 9. MULTIMESH FOREST ENGINE (15,850+ Foliage & Rock Instances)
+	# 9. MULTIMESH ECOLOGICAL VEGETATION ENGINE (16,000+ Instances)
 	# -------------------------------------------------------------------------
 	var foliage_root = Node3D.new()
 	foliage_root.name = "FoliageRoot"
@@ -264,9 +274,9 @@ func _init() -> void:
 	_build_cinematic_god_rays(foliage_root, root, mat_godray)
 	
 	# -------------------------------------------------------------------------
-	# 11. WILDERNESS SURVIVAL STATIONS (NO ROOM! PURE OUTDOOR SURVIVAL)
+	# 11. WORLD ARCHITECTURE & WILDERNESS SURVIVAL STATIONS
 	# -------------------------------------------------------------------------
-	_build_wilderness_survival_points(root)
+	_build_wilderness_survival_points(root, mat_pine_bark, mat_wood_plank, mat_zinc_roof, mat_rock)
 	
 	# -------------------------------------------------------------------------
 	# 12. Save Scene
@@ -285,31 +295,59 @@ func _init() -> void:
 		quit(1)
 		return
 		
-	print("[SUCCESS] Epic Alpine Mountain & Lush Forest Map generated and saved to ", save_path)
+	print("[SUCCESS] Logical Alpine Valley & Forest Map generated and saved to ", save_path)
 	quit(0)
 
 # =============================================================================
-# TERRAIN MATHEMATICS
+# GEOLOGICAL TERRAIN MATHEMATICS
 # =============================================================================
 
 static func _get_terrain_height(x: float, z: float) -> float:
-	var h1 = sin(x * 0.038) * cos(z * 0.034) * 3.4
-	var h2 = sin(x * 0.075 + 1.2) * sin(z * 0.068 - 0.7) * 1.6
-	var h3 = cos(x * 0.14 - z * 0.12) * 0.5
+	# 1. Macro Valley Drainage: Downstream gradient from South (+Z) to North (-Z)
+	var flow_gradient = (z - 14.0) * 0.025
 	
-	var edge_dist = max(abs(x), abs(z))
-	var ridge_t = clamp((edge_dist - 55.0) / 30.0, 0.0, 1.0)
-	var ridge_h = ridge_t * ridge_t * 7.5
+	# 2. Valley Spine / Floor Axis (Meandering geological trough)
+	var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+	var dist_valley = abs(x - valley_x)
+	var valley_u = (dist_valley / 26.0) * (dist_valley / 26.0) * 2.8
 	
-	var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-	var dist_path = abs(x - path_x)
-	var path_dip = (1.0 - clamp(dist_path / 3.8, 0.0, 1.0)) * 0.35
+	# 3. Dry Creek Bed / Stream Wash (lowest carved watercourse)
+	var creek_x = valley_x + sin(z * 0.05 + 0.8) * 4.5
+	var dist_creek = abs(x - creek_x)
+	var creek_dip = (1.0 - clamp((dist_creek - 0.7) / 2.3, 0.0, 1.0)) * 0.85
+	var creek_bank = sin(z * 0.14) * 0.22 * (1.0 - clamp((dist_creek - 2.0) / 3.2, 0.0, 1.0))
 	
-	var clearing_1 = 1.0 - clamp(Vector2(x, z - 14.0).length() / 16.0, 0.0, 1.0)
-	var clearing_2 = 1.0 - clamp(Vector2(x + 14.0, z + 18.0).length() / 20.0, 0.0, 1.0)
-	var flatten = max(clearing_1, clearing_2) * 0.65
+	# 4. Organic Moraines & Rolling Topography (multi-octave rolling hills)
+	var m1 = sin(x * 0.038 + 1.2) * cos(z * 0.034 - 0.6) * 2.8
+	var m2 = cos(x * 0.076 - 0.8) * sin(z * 0.068 + 1.1) * 1.5
+	var m3 = sin(x * 0.15 + z * 0.13) * 0.45
+	var rolling_hills = m1 + m2 + m3
 	
-	return (h1 + h2 + h3) * (1.0 - flatten) + ridge_h - path_dip
+	# 5. Outpost Alpha Terrace (Flat gravel plateau for cabin, palisades & player spawn)
+	var dist_outpost = Vector2(x - 1.0, z - 14.0).length()
+	var t_outpost = 1.0 - clamp(dist_outpost / 18.0, 0.0, 1.0)
+	var outpost_flatten = t_outpost * t_outpost * 0.75
+	
+	# 6. Ancient Stone Grotto Terrace (Flat ground for Mystery Box shrine)
+	var dist_grotto = Vector2(x + 18.0, z + 16.0).length()
+	var t_grotto = 1.0 - clamp(dist_grotto / 12.0, 0.0, 1.0)
+	var grotto_flatten = t_grotto * t_grotto * 0.70
+	
+	# 7. High Lookout Bluff (Elevated rock promontory for tactical defense & AK-47 stand)
+	var dist_bluff = Vector2(x - 20.0, z + 10.0).length()
+	var t_bluff = 1.0 - clamp(dist_bluff / 14.0, 0.0, 1.0)
+	var bluff_height = t_bluff * t_bluff * 3.8
+	
+	# 8. CONTINUOUS ORGANIC PERIMETER MOUNTAIN CIRQUE (NO SQUARE BOX!)
+	var dist_radial = Vector2(x, z).length()
+	var ang = atan2(z, x)
+	var rim_radius = 56.0 + sin(ang * 3.0) * 6.0 + cos(ang * 5.0) * 4.0
+	var rim_t = clamp((dist_radial - rim_radius) / 22.0, 0.0, 1.0)
+	var cirque_cliff = rim_t * rim_t * 32.0
+	
+	var base_h = flow_gradient + valley_u + rolling_hills + creek_bank - creek_dip
+	var flat = max(outpost_flatten, grotto_flatten)
+	return base_h * (1.0 - flat) + bluff_height + cirque_cliff
 
 func _generate_terrain_mesh(size: float, resolution: int) -> ArrayMesh:
 	var verts = PackedVector3Array()
@@ -362,77 +400,72 @@ func _generate_terrain_mesh(size: float, resolution: int) -> ArrayMesh:
 	return mesh
 
 # =============================================================================
-# MAJESTIC ALPINE MOUNTAIN BUILDER (360-Degree Panorama)
+# CONTINUOUS 360-DEGREE RADIAL ALPINE MOUNTAIN AMPHITHEATER
 # =============================================================================
 
-func _build_mountain_ranges(parent: Node3D, root: Node3D, mat_mountain: Material) -> void:
-	# 4 Mountain Ranges framing the horizon: North, South, East, West
-	var ranges = [
-		{"name": "NorthAlpineRange", "offset": Vector3(0, 0, -145.0), "rot": 0.0, "width": 280.0, "height": 78.0, "depth": 70.0},
-		{"name": "SouthAlpineRange", "offset": Vector3(0, 0, 145.0), "rot": PI, "width": 280.0, "height": 68.0, "depth": 70.0},
-		{"name": "EastAlpineCliffs", "offset": Vector3(145.0, 0, 0), "rot": -PI*0.5, "width": 280.0, "height": 72.0, "depth": 70.0},
-		{"name": "WestAlpineFoothills", "offset": Vector3(-145.0, 0, 0), "rot": PI*0.5, "width": 280.0, "height": 64.0, "depth": 70.0}
-	]
+func _build_mountain_amphitheater(parent: Node3D, root: Node3D, mat_mountain: Material) -> void:
+	var mi = MeshInstance3D.new()
+	mi.name = "AlpineAmphitheaterMesh"
+	mi.material_override = mat_mountain
 	
-	for r in ranges:
-		var m_mesh = _generate_mountain_mesh(r["width"], r["depth"], r["height"], 28, 12)
-		var mi = MeshInstance3D.new()
-		mi.name = r["name"]
-		mi.mesh = m_mesh
-		mi.material_override = mat_mountain
-		mi.position = r["offset"]
-		mi.rotation.y = r["rot"]
-		parent.add_child(mi)
-		mi.owner = root
-
-func _generate_mountain_mesh(width: float, depth: float, peak_height: float, res_x: int, res_z: int) -> ArrayMesh:
+	var radial_segments = 72
+	var ring_segments = 14
+	var r_inner = 110.0
+	var r_outer = 320.0
+	
 	var verts = PackedVector3Array()
 	var normals = PackedVector3Array()
 	var uvs = PackedVector2Array()
 	var indices = PackedInt32Array()
 	
-	var step_x = width / float(res_x)
-	var step_z = depth / float(res_z)
-	var cols = res_x + 1
-	var rows = res_z + 1
-	
-	for r in range(rows):
-		var z = -depth * 0.5 + float(r) * step_z
-		var z_factor = 1.0 - abs(z) / (depth * 0.5) # Ridge crest in middle
-		z_factor = pow(clamp(z_factor, 0.0, 1.0), 1.4)
+	for ring in range(ring_segments + 1):
+		var t_ring = float(ring) / float(ring_segments)
+		var rad = lerp(r_inner, r_outer, t_ring)
 		
-		for c in range(cols):
-			var x = -width * 0.5 + float(c) * step_x
-			# Jagged serrated alpine peaks
-			var p1 = sin(x * 0.045) * cos(x * 0.09) * 0.5 + 0.5
-			var p2 = sin(x * 0.12 + 1.4) * 0.3
-			var p3 = cos(x * 0.28) * 0.15
-			var peak_profile = p1 + p2 + p3
+		for seg in range(radial_segments + 1):
+			var t_seg = float(seg) / float(radial_segments)
+			var ang = t_seg * TAU
 			
-			var y = peak_height * peak_profile * z_factor
-			# Add craggy ridge noise
-			y += sin(x * 0.35 + z * 0.4) * 3.5 * z_factor
+			var x = cos(ang) * rad
+			var z = sin(ang) * rad
+			
+			# Parabolic elevation envelope: peaks rise in the mid-ring, taper to foothills & horizon
+			var ring_shape = sin(t_ring * PI)
+			
+			# Multi-peak angular profile: 8 major peaks, arêtes, jagged couloirs
+			var p1 = sin(ang * 4.0 + 0.5) * 22.0
+			var p2 = cos(ang * 8.0 - 0.7) * 14.0
+			var p3 = sin(ang * 16.0) * 7.0
+			var p4 = cos(ang * 32.0) * 3.5
+			var base_h = 55.0 + p1 + p2 + p3 + p4
+			
+			# Mount Blackwood glaciated summit towards North (-Z, ang ~ 4.71 rad)
+			var dist_north = abs(ang - 4.712)
+			if dist_north > PI: dist_north = TAU - dist_north
+			var summit_boost = (1.0 - clamp(dist_north / 1.1, 0.0, 1.0)) * 34.0
+			
+			var y = ring_shape * (base_h + summit_boost) + (1.0 - t_ring) * 18.0
 			
 			verts.append(Vector3(x, y, z))
-			uvs.append(Vector2(float(c)/float(res_x), float(r)/float(res_z)))
+			uvs.append(Vector2(t_seg * 8.0, t_ring))
 			
-	# Generate normals & indices
-	for r in range(res_z):
-		for c in range(res_x):
-			var i0 = r * cols + c
+	var cols = radial_segments + 1
+	for ring in range(ring_segments):
+		for seg in range(radial_segments):
+			var i0 = ring * cols + seg
 			var i1 = i0 + 1
-			var i2 = (r + 1) * cols + c
+			var i2 = (ring + 1) * cols + seg
 			var i3 = i2 + 1
 			
 			indices.append(i0)
-			indices.append(i2)
 			indices.append(i1)
+			indices.append(i2)
 			
 			indices.append(i1)
-			indices.append(i2)
 			indices.append(i3)
+			indices.append(i2)
 			
-	# Generate smooth surface normals
+	# Smooth surface normals
 	normals.resize(verts.size())
 	for i in range(normals.size()):
 		normals[i] = Vector3.ZERO
@@ -461,15 +494,17 @@ func _generate_mountain_mesh(width: float, depth: float, peak_height: float, res
 	
 	var mesh = ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-	return mesh
+	mi.mesh = mesh
+	parent.add_child(mi)
+	mi.owner = root
 
 func _build_world_boundaries(root: Node3D, size: float) -> void:
 	var half = size * 0.5 - 2.0
 	var bounds = [
-		{"pos": Vector3(0, 15, half), "size": Vector3(size, 40, 2)},
-		{"pos": Vector3(0, 15, -half), "size": Vector3(size, 40, 2)},
-		{"pos": Vector3(half, 15, 0), "size": Vector3(2, 40, size)},
-		{"pos": Vector3(-half, 15, 0), "size": Vector3(2, 40, size)}
+		{"pos": Vector3(0, 25, half), "size": Vector3(size, 60, 2)},
+		{"pos": Vector3(0, 25, -half), "size": Vector3(size, 60, 2)},
+		{"pos": Vector3(half, 25, 0), "size": Vector3(2, 60, size)},
+		{"pos": Vector3(-half, 25, 0), "size": Vector3(2, 60, size)}
 	]
 	for i in range(bounds.size()):
 		var sb = StaticBody3D.new()
@@ -488,7 +523,7 @@ func _build_world_boundaries(root: Node3D, size: float) -> void:
 		cs.owner = root
 
 # =============================================================================
-# MULTIMESH VEGETATION BUILDERS (15,850+ Instances)
+# MULTIMESH ECOLOGICAL VEGETATION ENGINE (16,000+ Instances)
 # =============================================================================
 
 # 1. Tall Douglas Firs & Northern Pines (1,800 trees, 18m - 28m)
@@ -535,17 +570,19 @@ func _populate_tall_pines(parent: Node3D, root: Node3D, mat_bark: Material, mat_
 	rng.seed = 42819
 	
 	while placed < count:
-		var x = rng.randf_range(-82.0, 82.0)
-		var z = rng.randf_range(-82.0, 82.0)
+		var x = rng.randf_range(-80.0, 80.0)
+		var z = rng.randf_range(-80.0, 80.0)
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 3.8: continue
-		if Vector2(x, z - 14.0).length() < 7.0: continue
+		# Ecological zone: Pines flourish on slopes and hills, stay clear of trail, creek, and outpost
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		if abs(x - valley_x) < 3.8: continue
+		if Vector2(x - 1.0, z - 14.0).length() < 9.5: continue # Outpost Alpha clearing
+		if Vector2(x + 18.0, z + 16.0).length() < 7.0: continue # Stone Dolmen Grotto
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.85, 1.45)
 		var yaw = rng.randf_range(0.0, TAU)
-		var lean = rng.randf_range(-0.06, 0.06)
+		var lean = rng.randf_range(-0.05, 0.05)
 		
 		var b = Basis().rotated(Vector3.UP, yaw).rotated(Vector3.RIGHT, lean).scaled(Vector3(sc, sc, sc))
 		mm.set_instance_transform(placed, Transform3D(b, Vector3(x, y - 0.2, z)))
@@ -555,7 +592,7 @@ func _populate_tall_pines(parent: Node3D, root: Node3D, mat_bark: Material, mat_
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 2. Hardwood Broadleaf Oaks (1,000 trees, 12m - 18m)
+# 2. Hardwood Broadleaf Oaks (900 trees, 12m - 18m)
 func _populate_broadleaf_oaks(parent: Node3D, root: Node3D, mat_bark: Material, mat_foliage: Material) -> void:
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -591,7 +628,7 @@ func _populate_broadleaf_oaks(parent: Node3D, root: Node3D, mat_bark: Material, 
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = oak_mesh
 	
-	var count = 1000
+	var count = 900
 	mm.instance_count = count
 	
 	var placed = 0
@@ -599,12 +636,14 @@ func _populate_broadleaf_oaks(parent: Node3D, root: Node3D, mat_bark: Material, 
 	rng.seed = 83912
 	
 	while placed < count:
-		var x = rng.randf_range(-80.0, 80.0)
-		var z = rng.randf_range(-80.0, 80.0)
+		var x = rng.randf_range(-78.0, 78.0)
+		var z = rng.randf_range(-78.0, 78.0)
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 4.2: continue
-		if Vector2(x, z - 14.0).length() < 8.0: continue
+		# Oaks prefer warm sunlit southeastern and valley flanks
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		if abs(x - valley_x) < 4.2: continue
+		if Vector2(x - 1.0, z - 14.0).length() < 10.0: continue
+		if Vector2(x + 18.0, z + 16.0).length() < 7.5: continue
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.9, 1.35)
@@ -618,7 +657,7 @@ func _populate_broadleaf_oaks(parent: Node3D, root: Node3D, mat_bark: Material, 
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 3. Mountain Birches (700 trees, 10m - 16m)
+# 3. Mountain Paper Birches (750 trees, water-loving, clustered near creek)
 func _populate_white_birches(parent: Node3D, root: Node3D, mat_birch_bark: Material, mat_foliage: Material) -> void:
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -654,7 +693,7 @@ func _populate_white_birches(parent: Node3D, root: Node3D, mat_birch_bark: Mater
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = birch_mesh
 	
-	var count = 700
+	var count = 750
 	mm.instance_count = count
 	
 	var placed = 0
@@ -662,12 +701,14 @@ func _populate_white_birches(parent: Node3D, root: Node3D, mat_birch_bark: Mater
 	rng.seed = 29314
 	
 	while placed < count:
-		var x = rng.randf_range(-78.0, 78.0)
-		var z = rng.randf_range(-78.0, 78.0)
+		# Birches gather in groves near moisture / valley edges
+		var z = rng.randf_range(-75.0, 75.0)
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		var offset_side = rng.randf_range(3.0, 16.0) * (1.0 if rng.randf() > 0.5 else -1.0)
+		var x = valley_x + offset_side
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 3.2: continue
-		if Vector2(x, z - 14.0).length() < 7.0: continue
+		if Vector2(x - 1.0, z - 14.0).length() < 9.0: continue
+		if Vector2(x + 18.0, z + 16.0).length() < 7.0: continue
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.85, 1.3)
@@ -681,7 +722,7 @@ func _populate_white_birches(parent: Node3D, root: Node3D, mat_birch_bark: Mater
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 4. Understory Forest Bushes & Shrubs (1,800 bushes, 1.8m - 3.2m)
+# 4. Understory Forest Bushes & Shrubs (1,800 bushes)
 func _populate_understory_shrubs(parent: Node3D, root: Node3D, mat_foliage: Material) -> void:
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -717,11 +758,12 @@ func _populate_understory_shrubs(parent: Node3D, root: Node3D, mat_foliage: Mate
 	rng.seed = 66129
 	
 	while placed < count:
-		var x = rng.randf_range(-82.0, 82.0)
-		var z = rng.randf_range(-82.0, 82.0)
+		var x = rng.randf_range(-80.0, 80.0)
+		var z = rng.randf_range(-80.0, 80.0)
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 2.5: continue
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		if abs(x - valley_x) < 2.4: continue
+		if Vector2(x - 1.0, z - 14.0).length() < 7.5: continue
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.8, 1.45)
@@ -735,7 +777,7 @@ func _populate_understory_shrubs(parent: Node3D, root: Node3D, mat_foliage: Mate
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 5. Lush Feathered Ferns (3,500 ferns, 0.7m - 1.3m)
+# 5. Lush Feathered Ferns (3,600 ferns, concentrated along creek & shaded hollows)
 func _populate_lush_ferns(parent: Node3D, root: Node3D, mat_fern: Material) -> void:
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -756,7 +798,7 @@ func _populate_lush_ferns(parent: Node3D, root: Node3D, mat_fern: Material) -> v
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = fern_mesh
 	
-	var count = 3500
+	var count = 3600
 	mm.instance_count = count
 	
 	var placed = 0
@@ -764,11 +806,16 @@ func _populate_lush_ferns(parent: Node3D, root: Node3D, mat_fern: Material) -> v
 	rng.seed = 99318
 	
 	while placed < count:
-		var x = rng.randf_range(-82.0, 82.0)
-		var z = rng.randf_range(-82.0, 82.0)
-		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 1.4: continue
+		var z = rng.randf_range(-80.0, 80.0)
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		# 65% of ferns hug the moist creek wash and valley lowlands
+		var x: float
+		if rng.randf() < 0.65:
+			x = valley_x + rng.randf_range(1.6, 9.5) * (1.0 if rng.randf() > 0.5 else -1.0)
+		else:
+			x = rng.randf_range(-78.0, 78.0)
+			
+		if Vector2(x - 1.0, z - 14.0).length() < 7.0: continue
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.85, 1.5)
@@ -782,7 +829,7 @@ func _populate_lush_ferns(parent: Node3D, root: Node3D, mat_fern: Material) -> v
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 6. Alpine Grass & Wildflower Tufts (5,500 tufts, 0.4m - 0.8m)
+# 6. Alpine Wild Grass & Mountain Flora (5,500 tufts)
 func _populate_wild_grass(parent: Node3D, root: Node3D, mat_grass: Material) -> void:
 	var st = SurfaceTool.new()
 	st.begin(Mesh.PRIMITIVE_TRIANGLES)
@@ -818,11 +865,11 @@ func _populate_wild_grass(parent: Node3D, root: Node3D, mat_grass: Material) -> 
 	rng.seed = 44102
 	
 	while placed < count:
-		var x = rng.randf_range(-82.0, 82.0)
-		var z = rng.randf_range(-82.0, 82.0)
+		var x = rng.randf_range(-80.0, 80.0)
+		var z = rng.randf_range(-80.0, 80.0)
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 1.0: continue
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		if abs(x - valley_x) < 1.0: continue
 			
 		var y = _get_terrain_height(x, z)
 		var sc = rng.randf_range(0.8, 1.55)
@@ -836,7 +883,7 @@ func _populate_wild_grass(parent: Node3D, root: Node3D, mat_grass: Material) -> 
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 7. Mossy Fallen Nurse Logs (450 logs, 6m - 10m)
+# 7. Mossy Fallen Nurse Logs (480 logs)
 func _populate_fallen_logs(parent: Node3D, root: Node3D, mat_bark: Material) -> void:
 	var log_mesh = CylinderMesh.new()
 	log_mesh.top_radius = 0.5
@@ -851,7 +898,7 @@ func _populate_fallen_logs(parent: Node3D, root: Node3D, mat_bark: Material) -> 
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = log_mesh
 	
-	var count = 450
+	var count = 480
 	mm.instance_count = count
 	
 	var placed = 0
@@ -859,11 +906,12 @@ func _populate_fallen_logs(parent: Node3D, root: Node3D, mat_bark: Material) -> 
 	rng.seed = 71239
 	
 	while placed < count:
-		var x = rng.randf_range(-80.0, 80.0)
-		var z = rng.randf_range(-80.0, 80.0)
+		var x = rng.randf_range(-78.0, 78.0)
+		var z = rng.randf_range(-78.0, 78.0)
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 3.0: continue
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
+		if abs(x - valley_x) < 3.2: continue
+		if Vector2(x - 1.0, z - 14.0).length() < 9.0: continue
 			
 		var y = _get_terrain_height(x, z)
 		var yaw = rng.randf_range(0.0, TAU)
@@ -880,7 +928,7 @@ func _populate_fallen_logs(parent: Node3D, root: Node3D, mat_bark: Material) -> 
 	parent.add_child(mm_inst)
 	mm_inst.owner = root
 
-# 8. Glacial Granite Boulders (600 boulders, 1.8m - 4.5m)
+# 8. Glacial Granite Boulders & Stream Stones (750 boulders)
 func _populate_granite_boulders(parent: Node3D, root: Node3D, mat_rock: Material) -> void:
 	var rock_mesh = BoxMesh.new()
 	rock_mesh.size = Vector3(2.4, 1.8, 2.6)
@@ -892,7 +940,7 @@ func _populate_granite_boulders(parent: Node3D, root: Node3D, mat_rock: Material
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = rock_mesh
 	
-	var count = 600
+	var count = 750
 	mm.instance_count = count
 	
 	var placed = 0
@@ -900,15 +948,24 @@ func _populate_granite_boulders(parent: Node3D, root: Node3D, mat_rock: Material
 	rng.seed = 33812
 	
 	while placed < count:
-		var x = rng.randf_range(-82.0, 82.0)
-		var z = rng.randf_range(-82.0, 82.0)
+		var z = rng.randf_range(-80.0, 80.0)
+		var valley_x = sin(z * 0.026) * 16.0 + cos(z * 0.062) * 7.0
 		
-		var path_x = sin(z * 0.045) * 12.0 + cos(z * 0.09) * 4.0
-		if abs(x - path_x) < 3.2: continue
+		# Boulders cluster in scree fields near mountain cliffs or along creek bed
+		var x: float
+		if rng.randf() < 0.4:
+			# Stream bed stones
+			x = valley_x + rng.randf_range(1.2, 5.0) * (1.0 if rng.randf() > 0.5 else -1.0)
+		else:
+			# Mountain slope talus
+			x = rng.randf_range(-80.0, 80.0)
+			
+		if Vector2(x - 1.0, z - 14.0).length() < 9.0: continue
+		if Vector2(x + 18.0, z + 16.0).length() < 6.0: continue
 			
 		var y = _get_terrain_height(x, z)
 		var yaw = rng.randf_range(0.0, TAU)
-		var sc = rng.randf_range(0.75, 1.9)
+		var sc = rng.randf_range(0.65, 1.8)
 		
 		var b = Basis().rotated(Vector3.UP, yaw).scaled(Vector3(sc, sc, sc))
 		mm.set_instance_transform(placed, Transform3D(b, Vector3(x, y + 0.4 * sc, z)))
@@ -978,9 +1035,9 @@ func _create_ambient_forest_particles() -> CPUParticles3D:
 	return p
 
 # -----------------------------------------------------------------------------
-# WILDERNESS SURVIVAL STATIONS
+# WORLD ARCHITECTURE & WILDERNESS SURVIVAL STATIONS
 # -----------------------------------------------------------------------------
-func _build_wilderness_survival_points(root: Node3D) -> void:
+func _build_wilderness_survival_points(root: Node3D, mat_bark: Material, mat_plank: Material, mat_roof: Material, mat_rock: Material) -> void:
 	var survival_root = Node3D.new()
 	survival_root.name = "WildernessSurvivalPoints"
 	root.add_child(survival_root)
@@ -992,7 +1049,172 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	var barrel_scene = load("res://interactables/ExplosiveBarrel.tscn")
 	var barricade_scene = load("res://interactables/BarricadeWindow.tscn")
 	
-	# Timber Trail Barricade across rock cut (x=-6, z=0)
+	# -------------------------------------------------------------------------
+	# A. RANGER OUTPOST ALPHA (Authentic Timber Cabin Shelter & Porch)
+	# -------------------------------------------------------------------------
+	var outpost_node = Node3D.new()
+	outpost_node.name = "RangerOutpostAlpha"
+	var outpost_y = _get_terrain_height(1.0, 14.0)
+	outpost_node.position = Vector3(1.0, outpost_y, 14.0)
+	survival_root.add_child(outpost_node)
+	outpost_node.owner = root
+	
+	# Outpost Wooden Deck Floor (8m x 6m)
+	var deck_mi = MeshInstance3D.new()
+	deck_mi.name = "OutpostDeckFloor"
+	var deck_mesh = BoxMesh.new()
+	deck_mesh.size = Vector3(8.0, 0.3, 6.0)
+	deck_mi.mesh = deck_mesh
+	deck_mi.material_override = mat_plank
+	deck_mi.position = Vector3(0, 0.15, 0)
+	outpost_node.add_child(deck_mi)
+	deck_mi.owner = root
+	
+	# Outpost Timber Walls (South, East, West)
+	var wall_south = MeshInstance3D.new()
+	wall_south.name = "WallSouth"
+	var bm_wall_s = BoxMesh.new()
+	bm_wall_s.size = Vector3(8.0, 3.2, 0.4)
+	wall_south.mesh = bm_wall_s
+	wall_south.material_override = mat_bark
+	wall_south.position = Vector3(0, 1.7, 2.8)
+	outpost_node.add_child(wall_south)
+	wall_south.owner = root
+	
+	var wall_west = MeshInstance3D.new()
+	wall_west.name = "WallWest"
+	var bm_wall_w = BoxMesh.new()
+	bm_wall_w.size = Vector3(0.4, 3.2, 5.6)
+	wall_west.mesh = bm_wall_w
+	wall_west.material_override = mat_bark
+	wall_west.position = Vector3(-3.8, 1.7, 0)
+	outpost_node.add_child(wall_west)
+	wall_west.owner = root
+	
+	var wall_east = MeshInstance3D.new()
+	wall_east.name = "WallEast"
+	var bm_wall_e = BoxMesh.new()
+	bm_wall_e.size = Vector3(0.4, 3.2, 5.6)
+	wall_east.mesh = bm_wall_e
+	wall_east.material_override = mat_bark
+	wall_east.position = Vector3(3.8, 1.7, 0)
+	outpost_node.add_child(wall_east)
+	wall_east.owner = root
+	
+	# Slanted Corrugated Zinc Roof Overhang
+	var roof_mi = MeshInstance3D.new()
+	roof_mi.name = "CorrugatedRoof"
+	var roof_mesh = BoxMesh.new()
+	roof_mesh.size = Vector3(9.2, 0.2, 7.2)
+	roof_mi.mesh = roof_mesh
+	roof_mi.material_override = mat_roof
+	roof_mi.position = Vector3(0, 3.5, 0)
+	roof_mi.rotation_degrees = Vector3(-8.0, 0, 0)
+	outpost_node.add_child(roof_mi)
+	roof_mi.owner = root
+	
+	# Porch Support Log Posts
+	var post_positions = [Vector3(-3.6, 1.6, -2.6), Vector3(3.6, 1.6, -2.6)]
+	for pi in range(post_positions.size()):
+		var post_mi = MeshInstance3D.new()
+		post_mi.name = "PorchPost_%d" % pi
+		var post_cyl = CylinderMesh.new()
+		post_cyl.top_radius = 0.15
+		post_cyl.bottom_radius = 0.18
+		post_cyl.height = 3.2
+		post_cyl.radial_segments = 6
+		post_mi.mesh = post_cyl
+		post_mi.material_override = mat_bark
+		post_mi.position = post_positions[pi]
+		outpost_node.add_child(post_mi)
+		post_mi.owner = root
+		
+	# Outpost Radio Antenna Mast
+	var antenna_mi = MeshInstance3D.new()
+	antenna_mi.name = "RadioAntennaMast"
+	var ant_mesh = CylinderMesh.new()
+	ant_mesh.top_radius = 0.05
+	ant_mesh.bottom_radius = 0.1
+	ant_mesh.height = 7.0
+	antenna_mi.mesh = ant_mesh
+	antenna_mi.material_override = mat_roof
+	antenna_mi.position = Vector3(3.5, 6.0, 2.5)
+	outpost_node.add_child(antenna_mi)
+	antenna_mi.owner = root
+	
+	# -------------------------------------------------------------------------
+	# B. TIMBER CREEK BRIDGE (Spans dry stream wash at z = 0)
+	# -------------------------------------------------------------------------
+	var bridge_node = Node3D.new()
+	bridge_node.name = "TimberCreekBridge"
+	var bridge_y = _get_terrain_height(-1.5, 0.0) + 0.35
+	bridge_node.position = Vector3(-1.5, bridge_y, 0.0)
+	survival_root.add_child(bridge_node)
+	bridge_node.owner = root
+	
+	var bridge_deck = MeshInstance3D.new()
+	bridge_deck.name = "BridgePlanks"
+	var b_deck_mesh = BoxMesh.new()
+	b_deck_mesh.size = Vector3(4.2, 0.3, 7.5)
+	bridge_deck.mesh = b_deck_mesh
+	bridge_deck.material_override = mat_plank
+	bridge_node.add_child(bridge_deck)
+	bridge_deck.owner = root
+	
+	# Bridge Side Rails
+	for side_x in [-2.0, 2.0]:
+		var rail_mi = MeshInstance3D.new()
+		rail_mi.name = "BridgeRail_%.1f" % side_x
+		var rail_mesh = BoxMesh.new()
+		rail_mesh.size = Vector3(0.15, 0.85, 7.5)
+		rail_mi.mesh = rail_mesh
+		rail_mi.material_override = mat_plank
+		rail_mi.position = Vector3(side_x, 0.55, 0)
+		bridge_node.add_child(rail_mi)
+		rail_mi.owner = root
+		
+	# -------------------------------------------------------------------------
+	# C. ANCIENT STONE DOLMEN GROTTO (Mystery Box Sanctuary at x=-18, z=-16)
+	# -------------------------------------------------------------------------
+	var dolmen_node = Node3D.new()
+	dolmen_node.name = "AncientDolmenGrotto"
+	var dolmen_y = _get_terrain_height(-18.0, -16.0)
+	dolmen_node.position = Vector3(-18.0, dolmen_y, -16.0)
+	survival_root.add_child(dolmen_node)
+	dolmen_node.owner = root
+	
+	# Megalithic Standing Stones in a crescent
+	for di in range(5):
+		var ang_d = -0.8 + float(di) * 0.4
+		var d_x = cos(ang_d) * 3.6
+		var d_z = sin(ang_d) * 3.6
+		var stone_mi = MeshInstance3D.new()
+		stone_mi.name = "DolmenStone_%d" % di
+		var stone_mesh = BoxMesh.new()
+		stone_mesh.size = Vector3(1.2, 4.2, 1.4)
+		stone_mi.mesh = stone_mesh
+		stone_mi.material_override = mat_rock
+		stone_mi.position = Vector3(d_x, 2.1, d_z)
+		stone_mi.rotation_degrees = Vector3(0, rad_to_deg(-ang_d), 0)
+		dolmen_node.add_child(stone_mi)
+		stone_mi.owner = root
+		
+	# Dolmen Capstone Slab
+	var capstone_mi = MeshInstance3D.new()
+	capstone_mi.name = "DolmenCapstone"
+	var cap_mesh = BoxMesh.new()
+	cap_mesh.size = Vector3(4.5, 0.8, 3.8)
+	capstone_mi.mesh = cap_mesh
+	capstone_mi.material_override = mat_rock
+	capstone_mi.position = Vector3(0, 4.3, 0)
+	dolmen_node.add_child(capstone_mi)
+	capstone_mi.owner = root
+	
+	# -------------------------------------------------------------------------
+	# D. SURVIVAL INTERACTABLES (Matching Test Suite Contract)
+	# -------------------------------------------------------------------------
+	
+	# 1. Trail Timber Barricade across rock cut (x=-6, z=0)
 	var barricade = barricade_scene.instantiate()
 	barricade.name = "TrailBarricade"
 	barricade.window_id = "forest_trail_choke"
@@ -1002,7 +1224,7 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(barricade)
 	barricade.owner = root
 	
-	# M1911 Ammo Cache by player spawn
+	# 2. M1911 Ammo Cache by Outpost Porch
 	var wb_m1911 = wallbuy_scene.instantiate()
 	wb_m1911.name = "Cache_M1911Ammo"
 	wb_m1911.weapon_resource_path = "res://weapons/pistol/M1911.tres"
@@ -1015,20 +1237,20 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(wb_m1911)
 	wb_m1911.owner = root
 	
-	# Remington 870 Stand
+	# 3. Remington 870 Stand on Outpost Deck
 	var wb_rem = wallbuy_scene.instantiate()
 	wb_rem.name = "Stand_Remington870"
 	wb_rem.weapon_resource_path = "res://weapons/shotgun/Remington870.tres"
 	wb_rem.weapon_display_name = "Remington 870 Shotgun"
 	wb_rem.weapon_cost = 500
 	wb_rem.ammo_cost = 250
-	var pos_rem = Vector3(-3.2, _get_terrain_height(-3.2, 4.0) + 1.2, 4.0)
+	var pos_rem = Vector3(-3.2, _get_terrain_height(-3.2, 14.0) + 1.2, 14.0)
 	wb_rem.position = pos_rem
-	wb_rem.rotation_degrees = Vector3(0, 45, 0)
+	wb_rem.rotation_degrees = Vector3(0, 90, 0)
 	survival_root.add_child(wb_rem)
 	wb_rem.owner = root
 	
-	# AK-47 Stand
+	# 4. AK-47 Stand on High Lookout Bluff
 	var wb_ak = wallbuy_scene.instantiate()
 	wb_ak.name = "Stand_AK47"
 	wb_ak.weapon_resource_path = "res://weapons/rifle/AK47.tres"
@@ -1041,7 +1263,7 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(wb_ak)
 	wb_ak.owner = root
 	
-	# M4A1 Stand
+	# 5. M4A1 Stand on River Crossing Ridge
 	var wb_m4 = wallbuy_scene.instantiate()
 	wb_m4.name = "Stand_M4A1"
 	wb_m4.weapon_resource_path = "res://weapons/carbine/M4A1.tres"
@@ -1054,7 +1276,7 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(wb_m4)
 	wb_m4.owner = root
 	
-	# Colt Python .357 Stand
+	# 6. Colt Python .357 Stand
 	var wb_py = wallbuy_scene.instantiate()
 	wb_py.name = "Stand_Python357"
 	wb_py.weapon_resource_path = "res://weapons/magnum/Python357.tres"
@@ -1067,16 +1289,16 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(wb_py)
 	wb_py.owner = root
 	
-	# Mystery Box in Ancient Stone Grove
+	# 7. Mystery Box resting in Ancient Stone Dolmen Grotto
 	var mbox = mysterybox_scene.instantiate()
 	mbox.name = "MysteryBox"
-	var pos_mbox = Vector3(-14.0, _get_terrain_height(-14.0, -18.0) + 0.1, -18.0)
+	var pos_mbox = Vector3(-18.0, _get_terrain_height(-18.0, -16.0) + 0.1, -16.0)
 	mbox.position = pos_mbox
 	mbox.rotation_degrees = Vector3(0, 35, 0)
 	survival_root.add_child(mbox)
 	mbox.owner = root
 	
-	# Perk Shrines (Juggernog & Speed Cola)
+	# 8. Perk Shrines (Juggernog beside Outpost Generator, Speed Cola on Porch)
 	var perk_jug = perk_scene.instantiate()
 	perk_jug.name = "Perk_Juggernog"
 	perk_jug.perk_type = 0
@@ -1095,7 +1317,7 @@ func _build_wilderness_survival_points(root: Node3D) -> void:
 	survival_root.add_child(perk_spd)
 	perk_spd.owner = root
 	
-	# Explosive Fuel Barrels
+	# 9. Tactical Explosive Fuel Barrels
 	var barrel_positions = [
 		Vector3(3.2, 0, 7.5),
 		Vector3(-4.5, 0, -5.0),

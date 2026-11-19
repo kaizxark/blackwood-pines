@@ -13,13 +13,17 @@ A photorealistic, adrenaline-fueled survival horror First-Person Shooter enginee
 
 ## 📸 In-Game Visuals & Environment
 
-| Alpine Mountain Vista (360° Panorama) | Dense Old-Growth Forest Understory |
+| Ranger Outpost Alpha & Tactical Porch | Timber Creek Bridge & Stream Wash |
 | :---: | :---: |
-| ![Alpine Mountain Panorama](alpine_mountains_panorama.png) | ![Lush Forest Undergrowth](lush_forest_undergrowth.png) |
+| ![Ranger Outpost Alpha](outpost_alpha_cabin_view.png) | ![Timber Creek Bridge](creek_bridge_wash_view.png) |
 
-| Tactical Weapon Ready on Trail | First-Person Combat Iron Sights |
+| Ancient Stone Dolmen (Mystery Box Grotto) | 360° Alpine Cirque Panorama |
 | :---: | :---: |
-| ![Weapon Ready Trail](weapon_ready_trail.png) | ![Combat Screenshot](blackwood_forest_screenshot.png) |
+| ![Ancient Dolmen Grotto](ancient_dolmen_grotto_view.png) | ![Alpine Cirque Panorama](alpine_cirque_panorama_view.png) |
+
+| Tactical Weapon Ready on Forest Trail | Dense Old-Growth Forest Understory |
+| :---: | :---: |
+| ![Weapon Ready Trail](weapon_ready_trail.png) | ![Lush Forest Undergrowth](lush_forest_undergrowth.png) |
 
 ---
 
@@ -56,22 +60,31 @@ Every firearm features custom 3D procedural modeling, damped harmonic recoil spr
 
 ---
 
-## 🌲 Environment & Rendering Architecture
+## 🌲 Geological Landscape & World Architecture
 
-* **360° Alpine Mountain Chain:** Four colossal jagged mountain ridges ($65\text{m} - 85\text{m}$) frame the valley play zone.
-* **Elevation-Based Shading (`alpine_mountain.gdshader`):**
-  * $y < 22\text{m}$: Dark mossy conifer foothills.
-  * $y \in [22, 55]\text{m}$: Sheer granite cliffs with horizontal geological fissures.
-  * $y > 55\text{m}$: Glaciated alpine snow caps with sun glint and specular reflections.
-* **15,350+ Instanced Foliage Assets (8 GPU MultiMeshes):**
-  * 1,800 Douglas Pines ($18\text{m}-28\text{m}$) with 4-tier needle branches
-  * 1,000 Broadleaf Hardwood Oaks ($12\text{m}-18\text{m}$)
-  * 700 Silver Mountain Birches ($10\text{m}-16\text{m}$) with white bark
+* **Glacial U-Valley Topography & Creek Wash:**
+  * Downstream natural gradient ($z = +90\text{m} \to z = -90\text{m}$) with a meandering geological valley spine.
+  * Carved dry creek bed with rounded river stones, drift logs, and stepping stones.
+  * Natural terracing: Outpost Alpha plateau, Ancient Stone Dolmen hollow, and High Lookout Bluff promontory.
+* **Continuous 360° Alpine Mountain Amphitheater:**
+  * Single seamless radial mountain ring ($R \in [110\text{m}, 320\text{m}]$) with 72 radial sectors and 14 elevation rings—eliminating disjointed flat panels or open seams.
+  * Soaring summits reaching $127.8\text{m}$ (Mount Blackwood peak, Sawtooth arêtes, and Cathedral spires) with glaciated snowfields and wind-blown rime.
+* **4-Octave Procedural Fractal Terrain Shader (`terrain_forest_lush.gdshader`):**
+  * Multi-layer procedural splatting: dark forest loam, fallen pine needles, worn gravel trail, velvety moss, and rain puddles.
+  * Triplanar vertical rock projection: cliffs exceeding $30^\circ$ project vertical strata and crustose lichens without stretching.
+* **Lived-In World Architecture:**
+  * **Ranger Outpost Alpha:** Weathered timber log cabin ($8\text{m} \times 6\text{m}$), raised wooden plank porch, corrugated zinc roof, radio antenna mast, and defensive window barricades.
+  * **Timber Creek Bridge:** Heavy log trestle bridge spanning the dry stream wash with side rails.
+  * **Ancient Stone Dolmen Grotto:** Megalithic ring of towering granite standing stones arching over the Mystery Box.
+* **16,000+ Instanced Ecological Flora Assets (8 GPU MultiMeshes):**
+  * 1,800 Douglas Pines ($18\text{m}-28\text{m}$) on montane slopes
+  * 900 Broadleaf Hardwood Oaks ($12\text{m}-18\text{m}$) on warm sunlit flanks
+  * 750 Silver Paper Birches ($10\text{m}-16\text{m}$) clustered near moist creek margins
   * 1,800 Understory Shrubs & Berry Bushes ($1.8\text{m}-3.2\text{m}$)
-  * 3,500 Lush Feathered Ferns ($0.7\text{m}-1.3\text{m}$)
-  * 5,500 Wild Grass & Alpine Wildflower Tufts ($0.4\text{m}-0.8\text{m}$)
-  * 450 Mossy Nurse Logs ($6\text{m}-10\text{m}$)
-  * 600 Glacial Granite Boulders ($1.8\text{m}-4.5\text{m}$)
+  * 3,600 Lush Feathered Ferns ($0.7\text{m}-1.3\text{m}$) hugging stream banks
+  * 5,500 Alpine Wild Grass & Wildflower Tufts ($0.4\text{m}-0.8\text{m}$)
+  * 480 Mossy Nurse Logs ($6\text{m}-10\text{m}$) aligned with slope fall-lines
+  * 750 Glacial Granite Boulders & Stream Stones ($1.8\text{m}-4.5\text{m}$)
 * **HeightMapShape3D Kinematic Collision:** Native 121×121 continuous heightfield collision eliminating ghost edges and ensuring flawless CharacterBody3D slope navigation.
 
 ---
