@@ -504,3 +504,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # HeightMapShape3D integration: floor_snap_length = 0.5 prevents edge detachment
 
 # Jump buffering allows 0.15s pre-landing jump requests to trigger on floor contact
+
+# Head-bob sine wave evaluates horizontal velocity magnitude for step frequency
