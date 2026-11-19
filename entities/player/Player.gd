@@ -520,3 +520,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Footstep sound intervals scale dynamically with current walking/sprinting speed
 
 # CharacterBody3D slide collision processing handles terrain slope normals
+
+# Player death sequence triggers camera tilt and notifies GameManager game over
