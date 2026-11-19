@@ -33,3 +33,5 @@ void fragment() {
 	ROUGHNESS = mix(0.85, 0.98, moss_mask);
 	SPECULAR = 0.15;
 }
+
+// World-up normal blend applies velvet green moss exclusively to top rock surfaces
