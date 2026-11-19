@@ -148,3 +148,5 @@ func get_interaction_prompt(_player: CharacterBody3D = null) -> String:
 ## Repairable wooden window barricade with damage tracking and player rebuild
 
 # Zombies tear down 1 plank every 1.8 seconds; player repairs 1 plank per E press
+
+# Each repaired plank awards +10 PTS to player score via EventBus signal
