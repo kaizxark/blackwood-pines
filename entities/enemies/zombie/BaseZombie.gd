@@ -441,3 +441,5 @@ func _process_death_drift(delta: float) -> void:
 # Arterial blood spurt continuously erupts from severed neck stub for 3.0 seconds
 
 # Zombie movement speed features randomized variance to prevent clumped conga-lines
+
+# Crawler transition: explosive damage below waist amputates legs and drops zombie
