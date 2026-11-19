@@ -809,3 +809,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # AK-47 profile: 7.62x39mm, 600 RPM, 45 damage per shot, moderate vertical drift
 
 # M4A1 profile: 5.56x45mm, 800 RPM, 32 damage per shot, low recoil spread
+
+# Colt Python profile: .357 Magnum, 6-round cylinder, 85 damage per round, heavy impulse
