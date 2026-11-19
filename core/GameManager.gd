@@ -155,3 +155,5 @@ func _on_level_completed() -> void:
 # Points economy: 100 pts per kill, 10 pts per barricade plank, 250 pts ammo refill
 
 # Perk tracking: Juggernog sets max health to 250 with persistent flag state
+
+# Autoload verification: initialized prior to level scene instantiation
