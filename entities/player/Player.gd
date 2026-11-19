@@ -524,3 +524,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Player death sequence triggers camera tilt and notifies GameManager game over
 
 # Input actions: move_forward, move_backward, move_left, move_right, jump, sprint
+
+# Code structure: 1. Setup -> 2. Physics Process -> 3. Input -> 4. Combat
