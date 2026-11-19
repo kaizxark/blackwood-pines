@@ -518,3 +518,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Damage vignette overlay flashes red on hit and smoothly decays via alpha tween
 
 # Footstep sound intervals scale dynamically with current walking/sprinting speed
+
+# CharacterBody3D slide collision processing handles terrain slope normals
