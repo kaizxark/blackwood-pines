@@ -142,3 +142,5 @@ func _clean_active_zombies() -> void:
 		if is_instance_valid(z) and z.get("is_dead") == false:
 			alive += 1
 	zombies_alive_count = alive
+
+# Standardized wave state definitions and timer transitions
