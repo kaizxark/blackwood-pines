@@ -91,3 +91,5 @@ func get_interaction_prompt(player: CharacterBody3D) -> String:
 	return "[E] BUY [%s] - %d PTS" % [weapon_display_name, weapon_cost]
 
 ## Interactive chalk wall outline station for weapon purchase and ammunition refill
+
+# Chalk outline rendered with additive emissive shader for night visibility
