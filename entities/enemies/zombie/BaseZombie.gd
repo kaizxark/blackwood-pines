@@ -431,3 +431,5 @@ func _process_death_drift(delta: float) -> void:
     move_and_slide()
 
 ## Undead NPC controller with navmesh pathfinding, dismemberment, and gore
+
+# Navigation agent path updates periodically every 0.25s toward player coordinates
