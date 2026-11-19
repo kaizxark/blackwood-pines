@@ -148,3 +148,5 @@ blackwood-pines/
 
 ## 📜 License
 Developed for Project Proto-Breach under the MIT License.
+
+<!-- Initial documentation milestone: Complete controls, lore, weapon stats, and rendering architecture -->
