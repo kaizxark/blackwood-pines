@@ -508,3 +508,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # Head-bob sine wave evaluates horizontal velocity magnitude for step frequency
 
 # Sprinting accelerates player to 10.5 m/s; sliding downhill adds gravity impulse
+
+# ADS transition lerps camera FOV from 75.0 to 54.0 degrees for precision aiming
