@@ -124,3 +124,5 @@ func get_interaction_prompt(_player: CharacterBody3D) -> String:
 ## Perk-a-Cola vending machine granting passive stat boosts upon purchase
 
 # Juggernog purchase permanently increases player max HP from 100 to 250
+
+# Perk machine chassis features animated pulsating neon glow and audio hum
