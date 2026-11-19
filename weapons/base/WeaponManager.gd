@@ -803,3 +803,5 @@ func _build_python_model(root_node: Node3D, _w: WeaponResource) -> void:
 # Ammo refill purchase caps reserve ammo at weapon_resource.max_reserve_ammo
 
 # M1911 profile: .45 ACP, 7-round magazine, 35 damage per shot, high precision
+
+# Remington 870 profile: 12-gauge, 8 pellets per shell, 22 damage per pellet
