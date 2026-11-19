@@ -496,3 +496,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
     return result
 
 ## First-person kinematic character body with physical spring recoil
+
+# 2nd-order damped harmonic spring model: pos += vel*dt, vel += (target-pos)*k - vel*d
