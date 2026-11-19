@@ -89,3 +89,5 @@ func get_interaction_prompt(player: CharacterBody3D) -> String:
 			if weapon_res and w.weapon_id == weapon_res.weapon_id:
 				return "[E] BUY AMMO [%s] - %d PTS" % [weapon_display_name, ammo_cost]
 	return "[E] BUY [%s] - %d PTS" % [weapon_display_name, weapon_cost]
+
+## Interactive chalk wall outline station for weapon purchase and ammunition refill
