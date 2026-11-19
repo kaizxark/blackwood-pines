@@ -144,3 +144,5 @@ func get_interaction_prompt(_player: CharacterBody3D = null) -> String:
 	if current_planks < max_planks:
 		return "[E] REBUILD PLANK (+10 PTS) [%d/%d]" % [current_planks, max_planks]
 	return ""
+
+## Repairable wooden window barricade with damage tracking and player rebuild
