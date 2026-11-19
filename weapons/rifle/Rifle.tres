@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_rifle"]
+
+[resource]
+script = ExtResource("1_rifle")
+weapon_name = "Arc Carbine"
+damage = 20
+fire_rate_rpm = 660.0
+is_automatic = true
+mag_capacity = 30
+current_ammo_in_mag = 30
+reserve_ammo = 150
+max_reserve_ammo = 240
+reload_time = 1.7
+recoil_rotation_impulse = Vector3(0.065, 0.01, -0.008)
+recoil_position_impulse = Vector3(0.0, 0.012, 0.04)
+spread_angle = 0.022
+pellets_per_shot = 1
+range_distance = 150.0
+fire_sound = "rifle_fire"
+viewmodel_color = Color(0.15, 0.2, 0.18, 1)
+emissive_accent_color = Color(0.2, 1, 0.4, 1)

@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_rem870"]
+
+[resource]
+script = ExtResource("1_rem870")
+weapon_name = "Remington 870 Police"
+weapon_id = "remington870"
+weapon_type_label = "[12-GAUGE PUMP-ACTION]"
+damage = 24
+headshot_multiplier = 3.0
+fire_rate_rpm = 75.0
+is_automatic = false
+mag_capacity = 6
+current_ammo_in_mag = 6
+reserve_ammo = 48
+max_reserve_ammo = 72
+reload_time = 2.1
+cost = 750
+ammo_cost = 350
+recoil_rotation_impulse = Vector3(0.24, 0.03, -0.02)
+recoil_position_impulse = Vector3(0.0, 0.05, 0.16)
+spread_angle = 0.045
+pellets_per_shot = 8
+range_distance = 55.0
+fire_sound = "shotgun_fire"
+viewmodel_color = Color(0.15, 0.16, 0.18, 1)
+emissive_accent_color = Color(1.0, 0.5, 0.1, 1)

@@ -1,0 +1,14 @@
+# Godot 4 Engine specific ignores
+.godot/
+bin/godot
+*.translation
+*.tmp
+scratch/
+
+# Linux / OS files
+.directory
+*~
+*.swp
+.DS_Store
+Thumbs.db
+

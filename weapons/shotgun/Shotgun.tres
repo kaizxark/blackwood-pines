@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_shotgun"]
+
+[resource]
+script = ExtResource("1_shotgun")
+weapon_name = "Scatter-8"
+damage = 14
+fire_rate_rpm = 75.0
+is_automatic = false
+mag_capacity = 6
+current_ammo_in_mag = 6
+reserve_ammo = 36
+max_reserve_ammo = 64
+reload_time = 2.2
+recoil_rotation_impulse = Vector3(0.24, 0.03, -0.02)
+recoil_position_impulse = Vector3(0.0, 0.04, 0.14)
+spread_angle = 0.058
+pellets_per_shot = 8
+range_distance = 60.0
+fire_sound = "shotgun_fire"
+viewmodel_color = Color(0.18, 0.16, 0.15, 1)
+emissive_accent_color = Color(1, 0.45, 0.05, 1)

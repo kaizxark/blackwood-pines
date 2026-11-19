@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://interactables/PerkMachine.gd" id="1_5xwg5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0ocdt"]
+size = Vector3(1.1, 2.2, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m6iia"]
+albedo_color = Color(0.75, 0.08, 0.08, 1)
+metallic = 0.5
+roughness = 0.35
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tw4j"]
+size = Vector3(1, 2.1, 0.8)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqefr"]
+albedo_color = Color(0.12, 0.12, 0.14, 1)
+metallic = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_yrgg2"]
+size = Vector3(0.7, 0.35, 0.15)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gd03b"]
+albedo_color = Color(0.9, 0.9, 0.9, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f6soa"]
+size = Vector3(0.9, 0.35, 0.1)
+
+[node name="PerkMachine" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_5xwg5")
+perk_type = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_0ocdt")
+
+[node name="MachineBody" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05, 0)
+material_override = SubResource("StandardMaterial3D_m6iia")
+mesh = SubResource("BoxMesh_0tw4j")
+
+[node name="VendingDispenser" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0.38)
+material_override = SubResource("StandardMaterial3D_wqefr")
+mesh = SubResource("BoxMesh_yrgg2")
+
+[node name="TitlePlate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0.38)
+material_override = SubResource("StandardMaterial3D_gd03b")
+mesh = SubResource("BoxMesh_f6soa")
+
+[node name="TitleLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.85, 0.44)
+modulate = Color(0.05, 0.05, 0.05, 1)
+text = "JUGGERNOG"
+font_size = 28
+outline_size = 6
+
+[node name="PromptLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.15, 0.44)
+modulate = Color(1, 0.85, 0.2, 1)
+text = "[E] BUY JUGGERNOG
+2500 PTS"
+font_size = 24
+outline_size = 6
+
+[node name="MachineLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4, 0.6)
+light_color = Color(1, 0.15, 0.15, 1)
+light_energy = 1.2
+omni_range = 4.0

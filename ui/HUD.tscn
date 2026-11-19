@@ -1,0 +1,604 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://ui/HUD.gd" id="1_f7sr6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe62w"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.02, 0.04, 0.07, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.75, 0.2, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otomb"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.12, 0.02, 0.02, 0.88)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.9, 0.15, 0.15, 0.85)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_we80m"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.4, 0.05, 0.05, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 0.2, 0.2, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3hhe"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.05, 0.35, 0.12, 0.85)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 1, 0.4, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fgixc"]
+content_margin_left = 14.0
+content_margin_top = 10.0
+content_margin_right = 14.0
+content_margin_bottom = 10.0
+bg_color = Color(0.02, 0.04, 0.07, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.8, 1, 0.75)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_38d5w"]
+bg_color = Color(0.2, 0.04, 0.04, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a8ibg"]
+bg_color = Color(0.15, 0.95, 0.38, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ut7pq"]
+bg_color = Color(0.03, 0.1, 0.18, 0.85)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jpp3d"]
+bg_color = Color(0.1, 0.8, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_f7sr6")
+
+[node name="UIRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="DamageVignette" type="ColorRect" parent="UIRoot"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.85, 0.05, 0.05, 0.35)
+
+[node name="Crosshair" type="Control" parent="UIRoot"]
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+
+[node name="Dot" type="ColorRect" parent="UIRoot/Crosshair"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 2.0
+offset_bottom = 2.0
+mouse_filter = 2
+color = Color(1, 1, 1, 0.95)
+
+[node name="Tick_0" type="ColorRect" parent="UIRoot/Crosshair"]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = 1.0
+mouse_filter = 2
+color = Color(0.9, 0.95, 1, 0.9)
+
+[node name="Tick_1" type="ColorRect" parent="UIRoot/Crosshair"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = -1.0
+offset_right = 16.0
+offset_bottom = 1.0
+mouse_filter = 2
+color = Color(0.9, 0.95, 1, 0.9)
+
+[node name="Tick_2" type="ColorRect" parent="UIRoot/Crosshair"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = -16.0
+offset_right = 1.0
+offset_bottom = -6.0
+mouse_filter = 2
+color = Color(0.9, 0.95, 1, 0.9)
+
+[node name="Tick_3" type="ColorRect" parent="UIRoot/Crosshair"]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 6.0
+offset_right = 1.0
+offset_bottom = 16.0
+mouse_filter = 2
+color = Color(0.9, 0.95, 1, 0.9)
+
+[node name="LockContainer" type="Control" parent="UIRoot/Crosshair"]
+visible = false
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="LockBracket_0" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = -14.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_1" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = -22.0
+offset_bottom = -14.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_2" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -22.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_3" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = -14.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_4" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 22.0
+offset_right = -14.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_5" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 14.0
+offset_right = -22.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_6" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 22.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockBracket_7" type="ColorRect" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 14.0
+offset_right = 24.0
+offset_bottom = 24.0
+mouse_filter = 2
+color = Color(1, 0.2, 0.2, 0.95)
+
+[node name="LockLabel" type="Label" parent="UIRoot/Crosshair/LockContainer"]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 26.0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 10
+theme_override_colors/font_color = Color(1, 0.25, 0.25, 1)
+text = "AIM LOCKED"
+horizontal_alignment = 1
+
+[node name="HitMarker" type="Control" parent="UIRoot"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+mouse_filter = 2
+
+[node name="HM_0" type="ColorRect" parent="UIRoot/HitMarker"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = -4.0
+offset_bottom = -4.0
+mouse_filter = 2
+color = Color(1, 0.1, 0.1, 1)
+
+[node name="HM_1" type="ColorRect" parent="UIRoot/HitMarker"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = -4.0
+mouse_filter = 2
+color = Color(1, 0.1, 0.1, 1)
+
+[node name="HM_2" type="ColorRect" parent="UIRoot/HitMarker"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(1, 0.1, 0.1, 1)
+
+[node name="HM_3" type="ColorRect" parent="UIRoot/HitMarker"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 10.0
+offset_bottom = 10.0
+mouse_filter = 2
+color = Color(1, 0.1, 0.1, 1)
+
+[node name="InteractionPanel" type="PanelContainer" parent="UIRoot"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = 65.0
+offset_right = 260.0
+offset_bottom = 115.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe62w")
+
+[node name="InteractionLabel" type="Label" parent="UIRoot/InteractionPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+theme_override_colors/font_color = Color(1, 0.9, 0.3, 1)
+text = "[E] REBUILD BARRICADE (+10 PTS)"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RoundPanel" type="PanelContainer" parent="UIRoot"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 25.0
+offset_right = 220.0
+offset_bottom = 85.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_otomb")
+
+[node name="RoundLabel" type="Label" parent="UIRoot/RoundPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(1, 0.22, 0.22, 1)
+text = "ROUND 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PointsPanel" type="PanelContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -205.0
+offset_right = -30.0
+offset_bottom = -150.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe62w")
+
+[node name="PointsHBox" type="HBoxContainer" parent="UIRoot/PointsPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PointsLabel" type="Label" parent="UIRoot/PointsPanel/PointsHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 0.85, 0.2, 1)
+text = "500 PTS"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="PointsDeltaLabel" type="Label" parent="UIRoot/PointsPanel/PointsHBox"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+theme_override_colors/font_color = Color(0.2, 1, 0.4, 1)
+text = "+100"
+vertical_alignment = 1
+
+[node name="PerksContainer" type="HBoxContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -185.0
+offset_right = 320.0
+offset_bottom = -148.0
+mouse_filter = 2
+
+[node name="JuggernogBadge" type="PanelContainer" parent="UIRoot/PerksContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_we80m")
+
+[node name="JugLabel" type="Label" parent="UIRoot/PerksContainer/JuggernogBadge"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "+ JUGGERNOG"
+
+[node name="SpeedColaBadge" type="PanelContainer" parent="UIRoot/PerksContainer"]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i3hhe")
+
+[node name="SpeedLabel" type="Label" parent="UIRoot/PerksContainer/SpeedColaBadge"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "⚡ SPEED COLA"
+
+[node name="BottomLeftPanel" type="PanelContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -140.0
+offset_right = 320.0
+offset_bottom = -25.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fgixc")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/BottomLeftPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealthHeader" type="HBoxContainer" parent="UIRoot/BottomLeftPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HealthTitle" type="Label" parent="UIRoot/BottomLeftPanel/VBoxContainer/HealthHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 0.8)
+text = "VITAL SIGNS"
+
+[node name="HealthNumLabel" type="Label" parent="UIRoot/BottomLeftPanel/VBoxContainer/HealthHeader"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "100"
+horizontal_alignment = 2
+
+[node name="HealthBar" type="ProgressBar" parent="UIRoot/BottomLeftPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_38d5w")
+theme_override_styles/fill = SubResource("StyleBoxFlat_a8ibg")
+value = 100.0
+show_percentage = false
+
+[node name="ShieldHeader" type="HBoxContainer" parent="UIRoot/BottomLeftPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ShieldTitle" type="Label" parent="UIRoot/BottomLeftPanel/VBoxContainer/ShieldHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(0.2, 0.8, 1, 0.8)
+text = "ENERGY SHIELD"
+
+[node name="ShieldNumLabel" type="Label" parent="UIRoot/BottomLeftPanel/VBoxContainer/ShieldHeader"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 22
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "60"
+horizontal_alignment = 2
+
+[node name="ShieldBar" type="ProgressBar" parent="UIRoot/BottomLeftPanel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_ut7pq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jpp3d")
+max_value = 60.0
+value = 60.0
+show_percentage = false
+
+[node name="BottomRightPanel" type="PanelContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -280.0
+offset_top = -140.0
+offset_right = -30.0
+offset_bottom = -25.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xe62w")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/BottomRightPanel"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WeaponHeader" type="HBoxContainer" parent="UIRoot/BottomRightPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="WeaponNameLabel" type="Label" parent="UIRoot/BottomRightPanel/VBoxContainer/WeaponHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(1, 0.75, 0.2, 1)
+text = "M1911 TACTICAL"
+
+[node name="FireModeLabel" type="Label" parent="UIRoot/BottomRightPanel/VBoxContainer/WeaponHeader"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 11
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+text = "[SEMI-AUTO]"
+horizontal_alignment = 2
+
+[node name="AmmoRow" type="HBoxContainer" parent="UIRoot/BottomRightPanel/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="AmmoMainLabel" type="Label" parent="UIRoot/BottomRightPanel/VBoxContainer/AmmoRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 44
+theme_override_colors/font_color = Color(1, 0.88, 0.25, 1)
+text = "12"
+
+[node name="AmmoReserveLabel" type="Label" parent="UIRoot/BottomRightPanel/VBoxContainer/AmmoRow"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.7, 0.75, 0.8, 1)
+text = " / 72"
+vertical_alignment = 2
+
+[node name="ReloadPromptLabel" type="Label" parent="UIRoot/BottomRightPanel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+text = "[R] RELOAD WEAPON"
+horizontal_alignment = 2
+
+[node name="TopCenterPanel" type="PanelContainer" parent="UIRoot"]
+layout_mode = 0
+anchor_right = 1.0
+offset_left = 320.0
+offset_top = 18.0
+offset_right = -320.0
+offset_bottom = 60.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fgixc")
+
+[node name="ObjectiveLabel" type="Label" parent="UIRoot/TopCenterPanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.2, 0.9, 1, 1)
+text = "[!] SURVIVE THE OUTBREAK | [F] FLASHLIGHT | [E] INTERACT | [1-5] WEAPONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EndScreen" type="PanelContainer" parent="UIRoot"]
+visible = false
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -140.0
+offset_right = 260.0
+offset_bottom = 140.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_otomb")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIRoot/EndScreen"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="UIRoot/EndScreen/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+text = "YOU DIED"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="UIRoot/EndScreen/VBoxContainer"]
+layout_mode = 2
+text = "Rounds Survived: 1
+Zombies Killed: 0
+
+[PRESS 'R' TO RESTART]"
+horizontal_alignment = 1

@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://entities/enemies/enforcer/EnforcerEnemy.gd" id="1_dccsp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3lmgs"]
+radius = 0.45
+height = 1.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sg2ki"]
+albedo_color = Color(0.15, 0.16, 0.18, 1)
+metallic = 0.7
+
+[sub_resource type="BoxMesh" id="BoxMesh_gu0wg"]
+size = Vector3(0.6, 0.8, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_l0av8"]
+size = Vector3(0.32, 0.35, 0.32)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euv1c"]
+albedo_color = Color(1, 0.2, 0.05, 1)
+emission_enabled = true
+emission = Color(1, 0.2, 0.05, 1)
+emission_energy_multiplier = 2.5
+
+[sub_resource type="BoxMesh" id="BoxMesh_fw8ei"]
+size = Vector3(0.28, 0.08, 0.1)
+
+[node name="EnforcerEnemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_dccsp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.95, 0)
+shape = SubResource("CapsuleShape3D_3lmgs")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="VisionRay" type="RayCast3D" parent="."]
+collision_mask = 3
+
+[node name="VisualRoot" type="Node3D" parent="."]
+
+[node name="@MeshInstance3D@4" type="MeshInstance3D" parent="VisualRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+material_override = SubResource("StandardMaterial3D_sg2ki")
+mesh = SubResource("BoxMesh_gu0wg")
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="VisualRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+material_override = SubResource("StandardMaterial3D_sg2ki")
+mesh = SubResource("BoxMesh_l0av8")
+
+[node name="@MeshInstance3D@6" type="MeshInstance3D" parent="VisualRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.62, -0.16)
+material_override = SubResource("StandardMaterial3D_euv1c")
+mesh = SubResource("BoxMesh_fw8ei")

@@ -1,0 +1,851 @@
+[gd_scene load_steps=87 format=3]
+
+[ext_resource type="Script" path="res://levels/zombie_outbreak/Sector7_Quarantine.gd" id="1_55lkd"]
+[ext_resource type="Script" path="res://core/ZombieHordeDirector.gd" id="2_gdg5q"]
+[ext_resource type="PackedScene" path="res://entities/enemies/zombie/Zombie.tscn" id="3_sbrix"]
+[ext_resource type="PackedScene" path="res://entities/player/Player.tscn" id="4_ka8p6"]
+[ext_resource type="Script" path="res://entities/player/Player.gd" id="5_gj4hj"]
+[ext_resource type="PackedScene" path="res://ui/HUD.tscn" id="6_6gpuj"]
+[ext_resource type="Script" path="res://ui/HUD.gd" id="7_nu3it"]
+[ext_resource type="Material" path="res://assets/materials/mat_floor.tres" id="8_q2gs2"]
+[ext_resource type="Material" path="res://assets/materials/mat_wall.tres" id="9_d8til"]
+[ext_resource type="PackedScene" path="res://interactables/DebrisDoor.tscn" id="10_8vlyc"]
+[ext_resource type="Script" path="res://interactables/DebrisDoor.gd" id="11_xobhc"]
+[ext_resource type="PackedScene" path="res://interactables/BarricadeWindow.tscn" id="12_fsrfg"]
+[ext_resource type="Script" path="res://interactables/BarricadeWindow.gd" id="13_mx32k"]
+[ext_resource type="PackedScene" path="res://interactables/WallBuyStation.tscn" id="14_i0idy"]
+[ext_resource type="Script" path="res://interactables/WallBuyStation.gd" id="15_o17a5"]
+[ext_resource type="Material" path="res://assets/materials/mat_hazard.tres" id="16_eadrr"]
+[ext_resource type="PackedScene" path="res://interactables/MysteryBox.tscn" id="17_jit62"]
+[ext_resource type="Script" path="res://interactables/MysteryBox.gd" id="18_w0voh"]
+[ext_resource type="PackedScene" path="res://interactables/ExplosiveBarrel.tscn" id="19_f2kfa"]
+[ext_resource type="Script" path="res://interactables/ExplosiveBarrel.gd" id="20_frmn6"]
+[ext_resource type="PackedScene" path="res://interactables/PerkMachine.tscn" id="21_j7kbe"]
+[ext_resource type="Script" path="res://interactables/PerkMachine.gd" id="22_lj1tc"]
+
+[sub_resource type="Environment" id="Environment_pmh1y"]
+background_mode = 1
+background_color = Color(0.04, 0.05, 0.07, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.14, 0.16, 0.22, 1)
+ambient_light_energy = 0.4
+ssao_enabled = true
+glow_enabled = true
+glow_intensity = 0.85
+glow_bloom = 0.15
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8xo75"]
+size = Vector3(18, 0.4, 16)
+
+[sub_resource type="BoxMesh" id="BoxMesh_a4xqp"]
+size = Vector3(18, 0.4, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ku3r"]
+size = Vector3(18, 0.4, 16)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f7mqj"]
+albedo_color = Color(0.12, 0.13, 0.15, 1)
+roughness = 0.8
+
+[sub_resource type="BoxMesh" id="BoxMesh_xtj0g"]
+size = Vector3(18, 0.4, 16)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_il6po"]
+size = Vector3(18, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5dg1d"]
+size = Vector3(18, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k35w5"]
+size = Vector3(0.5, 5, 5.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fkll3"]
+size = Vector3(0.5, 5, 5.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_l2d8n"]
+size = Vector3(0.5, 5, 7.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vkjca"]
+size = Vector3(0.5, 5, 7.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nqh17"]
+size = Vector3(0.5, 2.2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_juxea"]
+size = Vector3(0.5, 2.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3byf"]
+size = Vector3(0.5, 5, 6.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lgtvs"]
+size = Vector3(0.5, 5, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wjxb5"]
+size = Vector3(0.5, 5, 6.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_0tiqw"]
+size = Vector3(0.5, 5, 6.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hp6aj"]
+size = Vector3(0.5, 2.2, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qeagv"]
+size = Vector3(0.5, 2.2, 3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fnddo"]
+size = Vector3(5.5, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7k0ag"]
+size = Vector3(5.5, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fwyiv"]
+size = Vector3(6.5, 5, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2ilhg"]
+size = Vector3(6.5, 5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x5rso"]
+size = Vector3(3.6, 1.8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_47801"]
+size = Vector3(3.6, 1.8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u2ca8"]
+size = Vector3(1.2, 0.85, 2.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_os0xo"]
+size = Vector3(1.2, 0.85, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tnmva"]
+size = Vector3(1.2, 0.85, 2.4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2o6g"]
+size = Vector3(1.2, 0.85, 2.4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjr21"]
+size = Vector3(2, 0.6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ddrli"]
+size = Vector3(2, 0.6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0axoa"]
+size = Vector3(34, 0.4, 32)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dpftc"]
+size = Vector3(34, 0.4, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_al4u1"]
+size = Vector3(34, 0.4, 32)
+
+[sub_resource type="BoxMesh" id="BoxMesh_nn78o"]
+size = Vector3(34, 0.4, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dyo74"]
+size = Vector3(12, 8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5p7p"]
+size = Vector3(12, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q44t8"]
+size = Vector3(8, 8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8am8s"]
+size = Vector3(8, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_guwue"]
+size = Vector3(12, 8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6sf2i"]
+size = Vector3(12, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gtbni"]
+size = Vector3(12.5, 8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mj1oq"]
+size = Vector3(12.5, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j1yd2"]
+size = Vector3(12.5, 8, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_krea7"]
+size = Vector3(12.5, 8, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxphj"]
+size = Vector3(0.5, 8, 32)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kwyrx"]
+size = Vector3(0.5, 8, 32)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_d4wy0"]
+size = Vector3(0.5, 8, 14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_r1x5d"]
+size = Vector3(0.5, 8, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mv0gf"]
+size = Vector3(0.5, 8, 14)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jvlbi"]
+size = Vector3(0.5, 8, 14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ckpw7"]
+size = Vector3(0.5, 4.8, 4)
+
+[sub_resource type="BoxMesh" id="BoxMesh_77b0j"]
+size = Vector3(0.5, 4.8, 4)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voh7y"]
+size = Vector3(24, 0.4, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_531da"]
+size = Vector3(24, 0.4, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_usftf"]
+size = Vector3(24, 0.4, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_v6wp1"]
+size = Vector3(24, 0.4, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_phbkn"]
+size = Vector3(0.5, 6, 18)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d5m1c"]
+size = Vector3(0.5, 6, 18)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5inds"]
+size = Vector3(24, 6, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ycks8"]
+size = Vector3(24, 6, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c0vg8"]
+size = Vector3(24, 6, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6avmn"]
+size = Vector3(24, 6, 0.5)
+
+[node name="Sector7Quarantine" type="Node3D"]
+script = ExtResource("1_55lkd")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pmh1y")
+
+[node name="Moonlight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.743145, -0.567455, 0.354585, 0, 0.529919, 0.848048, -0.669131, -0.630223, 0.393807, 0, 0, 0)
+light_color = Color(0.48, 0.62, 0.82, 1)
+light_energy = 0.35
+shadow_enabled = true
+
+[node name="ZombieHordeDirector" type="Node3D" parent="."]
+script = ExtResource("2_gdg5q")
+zombie_scene = ExtResource("3_sbrix")
+auto_start = true
+intermission_duration = 6.0
+max_active_zombies = 24
+
+[node name="Player" type="CharacterBody3D" parent="." instance=ExtResource("4_ka8p6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("5_gj4hj")
+walk_speed = 7.0
+sprint_speed = 11.0
+crouch_speed = 4.0
+slide_boost = 14.0
+jump_velocity = 8.5
+gravity = 24.0
+acceleration = 14.0
+friction = 10.0
+air_control = 3.5
+mouse_sensitivity = 0.0022
+default_fov = 85.0
+sprint_fov = 95.0
+bob_frequency = 2.4
+bob_amplitude = 0.06
+roll_tilt_angle = 2.5
+aim_assist_enabled = true
+aim_friction_cone = 10.0
+aim_friction_strength = 0.52
+aim_snap_cone = 14.5
+aim_snap_weight = 0.4
+aim_rotational_speed = 3.2
+max_health = 100
+max_shield = 60
+
+[node name="HUD" type="CanvasLayer" parent="." instance=ExtResource("6_6gpuj")]
+script = ExtResource("7_nu3it")
+
+[node name="MedBaySpawn" type="Node3D" parent="."]
+
+[node name="MedbayFloor" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayFloor"]
+shape = SubResource("BoxShape3D_8xo75")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayFloor"]
+material_override = ExtResource("8_q2gs2")
+mesh = SubResource("BoxMesh_a4xqp")
+
+[node name="MedbayCeiling" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayCeiling"]
+shape = SubResource("BoxShape3D_8ku3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayCeiling"]
+material_override = SubResource("StandardMaterial3D_f7mqj")
+mesh = SubResource("BoxMesh_xtj0g")
+
+[node name="MedbaySouthWall" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 8)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbaySouthWall"]
+shape = SubResource("BoxShape3D_il6po")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbaySouthWall"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_5dg1d")
+
+[node name="MedbayWestWall_N" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, -5.25)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayWestWall_N"]
+shape = SubResource("BoxShape3D_k35w5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayWestWall_N"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_fkll3")
+
+[node name="MedbayWestWall_S" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 2.5, 4.25)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayWestWall_S"]
+shape = SubResource("BoxShape3D_l2d8n")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayWestWall_S"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_vkjca")
+
+[node name="MedbayWestWall_Top" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 3.9, -1)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayWestWall_Top"]
+shape = SubResource("BoxShape3D_nqh17")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayWestWall_Top"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_juxea")
+
+[node name="MedbayEastWall_N" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, -4.75)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayEastWall_N"]
+shape = SubResource("BoxShape3D_t3byf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayEastWall_N"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_lgtvs")
+
+[node name="MedbayEastWall_S" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 2.5, 4.75)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayEastWall_S"]
+shape = SubResource("BoxShape3D_wjxb5")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayEastWall_S"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_0tiqw")
+
+[node name="MedbayEastWall_Top" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 3.9, 0)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayEastWall_Top"]
+shape = SubResource("BoxShape3D_hp6aj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayEastWall_Top"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_qeagv")
+
+[node name="MedbayNorthWall_L" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.25, 2.5, -8)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayNorthWall_L"]
+shape = SubResource("BoxShape3D_fnddo")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayNorthWall_L"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_7k0ag")
+
+[node name="MedbayNorthWall_R" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.75, 2.5, -8)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayNorthWall_R"]
+shape = SubResource("BoxShape3D_fwyiv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayNorthWall_R"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_2ilhg")
+
+[node name="MedbayNorthWall_Top" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.1, -8)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/MedbayNorthWall_Top"]
+shape = SubResource("BoxShape3D_x5rso")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/MedbayNorthWall_Top"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_47801")
+
+[node name="Door_To_Atrium" type="StaticBody3D" parent="MedBaySpawn" instance=ExtResource("10_8vlyc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("11_xobhc")
+door_id = "door_atrium"
+cost = 750
+door_name = "Decontamination Air双lock"
+
+[node name="Barricade_Medbay_West" type="StaticBody3D" parent="MedBaySpawn" instance=ExtResource("12_fsrfg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -9, 0, -1)
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("13_mx32k")
+window_id = "medbay_west"
+max_planks = 5
+
+[node name="Barricade_Medbay_East" type="StaticBody3D" parent="MedBaySpawn" instance=ExtResource("12_fsrfg")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, 0)
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("13_mx32k")
+window_id = "medbay_east"
+max_planks = 5
+
+[node name="WallBuy_M1911Ammo" type="StaticBody3D" parent="MedBaySpawn" instance=ExtResource("14_i0idy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.6, 7.7)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("15_o17a5")
+weapon_resource_path = "res://weapons/pistol/M1911.tres"
+weapon_display_name = "M1911 Ammo"
+weapon_cost = 250
+ammo_cost = 250
+
+[node name="WallBuy_Remington870" type="StaticBody3D" parent="MedBaySpawn" instance=ExtResource("14_i0idy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8.7, 1.6, 4)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("15_o17a5")
+weapon_resource_path = "res://weapons/shotgun/Remington870.tres"
+weapon_display_name = "Remington 870"
+weapon_cost = 500
+ammo_cost = 250
+
+[node name="MedbayLight1" type="OmniLight3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, -3)
+light_color = Color(1, 0.88, 0.65, 1)
+light_energy = 0.9
+omni_range = 14.0
+
+[node name="MedbayLight2" type="OmniLight3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, -3)
+light_color = Color(1, 0.88, 0.65, 1)
+light_energy = 0.9
+omni_range = 14.0
+
+[node name="MedbayLight3" type="OmniLight3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 4.5, 4)
+light_color = Color(1, 0.88, 0.65, 1)
+light_energy = 0.9
+omni_range = 14.0
+
+[node name="MedbayLight4" type="OmniLight3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 4.5, 4)
+light_color = Color(1, 0.88, 0.65, 1)
+light_energy = 0.9
+omni_range = 14.0
+
+[node name="MedbayRedBeacon" type="OmniLight3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.7, 0)
+light_color = Color(1, 0.15, 0.15, 1)
+light_energy = 1.1
+omni_range = 10.0
+
+[node name="Gurney1" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.42, 1.5)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/Gurney1"]
+shape = SubResource("BoxShape3D_u2ca8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/Gurney1"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_os0xo")
+
+[node name="Gurney2" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 0.42, 2)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/Gurney2"]
+shape = SubResource("BoxShape3D_tnmva")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/Gurney2"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_u2o6g")
+
+[node name="FallenCabinet" type="StaticBody3D" parent="MedBaySpawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.3, -4.5)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MedBaySpawn/FallenCabinet"]
+shape = SubResource("BoxShape3D_gjr21")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MedBaySpawn/FallenCabinet"]
+material_override = ExtResource("16_eadrr")
+mesh = SubResource("BoxMesh_ddrli")
+
+[node name="MainAtrium" type="Node3D" parent="."]
+
+[node name="AtriumFloor" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumFloor"]
+shape = SubResource("BoxShape3D_0axoa")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumFloor"]
+material_override = ExtResource("8_q2gs2")
+mesh = SubResource("BoxMesh_dpftc")
+
+[node name="AtriumCeiling" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumCeiling"]
+shape = SubResource("BoxShape3D_al4u1")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumCeiling"]
+material_override = SubResource("StandardMaterial3D_f7mqj")
+mesh = SubResource("BoxMesh_nn78o")
+
+[node name="AtriumNorthWall_L" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 4, -44)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumNorthWall_L"]
+shape = SubResource("BoxShape3D_dyo74")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumNorthWall_L"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_d5p7p")
+
+[node name="AtriumNorthWall_C" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -44)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumNorthWall_C"]
+shape = SubResource("BoxShape3D_q44t8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumNorthWall_C"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_8am8s")
+
+[node name="AtriumNorthWall_R" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 4, -44)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumNorthWall_R"]
+shape = SubResource("BoxShape3D_guwue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumNorthWall_R"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_6sf2i")
+
+[node name="AtriumSouthWall_L" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.75, 4, -12)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumSouthWall_L"]
+shape = SubResource("BoxShape3D_gtbni")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumSouthWall_L"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_mj1oq")
+
+[node name="AtriumSouthWall_R" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.75, 4, -12)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumSouthWall_R"]
+shape = SubResource("BoxShape3D_j1yd2")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumSouthWall_R"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_krea7")
+
+[node name="AtriumWestWall" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 4, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumWestWall"]
+shape = SubResource("BoxShape3D_uxphj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumWestWall"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_kwyrx")
+
+[node name="AtriumEastWall_N" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -35)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumEastWall_N"]
+shape = SubResource("BoxShape3D_d4wy0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumEastWall_N"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_r1x5d")
+
+[node name="AtriumEastWall_S" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 4, -21)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumEastWall_S"]
+shape = SubResource("BoxShape3D_mv0gf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumEastWall_S"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_jvlbi")
+
+[node name="AtriumEastWall_Top" type="StaticBody3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 5.6, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MainAtrium/AtriumEastWall_Top"]
+shape = SubResource("BoxShape3D_ckpw7")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MainAtrium/AtriumEastWall_Top"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_77b0j")
+
+[node name="Door_To_Lab" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("10_8vlyc")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 17, 0, -28)
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("11_xobhc")
+door_id = "door_atrium"
+cost = 1000
+door_name = "Decontamination Air双lock"
+
+[node name="MysteryBox" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("17_jit62")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -28)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("18_w0voh")
+
+[node name="WallBuy_AK47" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("14_i0idy")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.7, 1.8, -20)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("15_o17a5")
+weapon_resource_path = "res://weapons/rifle/AK47.tres"
+weapon_display_name = "AK-47"
+weapon_cost = 1200
+ammo_cost = 600
+
+[node name="WallBuy_M4A1" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("14_i0idy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -16.7, 1.8, -20)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("15_o17a5")
+weapon_resource_path = "res://weapons/carbine/M4A1.tres"
+weapon_display_name = "M4A1 Carbine"
+weapon_cost = 1500
+ammo_cost = 750
+
+[node name="ExplosiveBarrel_1" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("19_f2kfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -22)
+script = ExtResource("20_frmn6")
+max_health = 25
+explosion_damage = 85
+explosion_radius = 6.5
+
+[node name="ExplosiveBarrel_2" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("19_f2kfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, -34)
+script = ExtResource("20_frmn6")
+max_health = 25
+explosion_damage = 85
+explosion_radius = 6.5
+
+[node name="ExplosiveBarrel_3" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("19_f2kfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, -36)
+script = ExtResource("20_frmn6")
+max_health = 25
+explosion_damage = 85
+explosion_radius = 6.5
+
+[node name="ExplosiveBarrel_4" type="StaticBody3D" parent="MainAtrium" instance=ExtResource("19_f2kfa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -22)
+script = ExtResource("20_frmn6")
+max_health = 25
+explosion_damage = 85
+explosion_radius = 6.5
+
+[node name="AtriumLight1" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7.2, -20)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumLight2" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.2, -20)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumLight3" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7.2, -28)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumLight4" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.2, -28)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumLight5" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 7.2, -36)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumLight6" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 7.2, -36)
+light_color = Color(0.85, 0.9, 1, 1)
+omni_range = 18.0
+
+[node name="AtriumBeacon" type="OmniLight3D" parent="MainAtrium"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.5, -28)
+light_color = Color(0.2, 0.75, 1, 1)
+light_energy = 1.4
+omni_range = 22.0
+
+[node name="ContainmentLab" type="Node3D" parent="."]
+
+[node name="LabFloor" type="StaticBody3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, -0.2, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainmentLab/LabFloor"]
+shape = SubResource("BoxShape3D_voh7y")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ContainmentLab/LabFloor"]
+material_override = ExtResource("8_q2gs2")
+mesh = SubResource("BoxMesh_531da")
+
+[node name="LabCeiling" type="StaticBody3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 6, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainmentLab/LabCeiling"]
+shape = SubResource("BoxShape3D_usftf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ContainmentLab/LabCeiling"]
+material_override = SubResource("StandardMaterial3D_f7mqj")
+mesh = SubResource("BoxMesh_v6wp1")
+
+[node name="LabEastWall" type="StaticBody3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41, 3, -28)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainmentLab/LabEastWall"]
+shape = SubResource("BoxShape3D_phbkn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ContainmentLab/LabEastWall"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_d5m1c")
+
+[node name="LabNorthWall" type="StaticBody3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 3, -37)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainmentLab/LabNorthWall"]
+shape = SubResource("BoxShape3D_5inds")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ContainmentLab/LabNorthWall"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_ycks8")
+
+[node name="LabSouthWall" type="StaticBody3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 3, -19)
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ContainmentLab/LabSouthWall"]
+shape = SubResource("BoxShape3D_c0vg8")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ContainmentLab/LabSouthWall"]
+material_override = ExtResource("9_d8til")
+mesh = SubResource("BoxMesh_6avmn")
+
+[node name="Perk_Juggernog" type="StaticBody3D" parent="ContainmentLab" instance=ExtResource("21_j7kbe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40.4, 0, -32)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("22_lj1tc")
+perk_type = 0
+
+[node name="Perk_SpeedCola" type="StaticBody3D" parent="ContainmentLab" instance=ExtResource("21_j7kbe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 40.4, 0, -24)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("22_lj1tc")
+perk_type = 1
+
+[node name="WallBuy_Python357" type="StaticBody3D" parent="ContainmentLab" instance=ExtResource("14_i0idy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29, 1.8, -36.7)
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("15_o17a5")
+weapon_resource_path = "res://weapons/magnum/Python357.tres"
+weapon_display_name = "Colt Python .357"
+weapon_cost = 2000
+ammo_cost = 1000
+
+[node name="LabLight1" type="OmniLight3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25, 5.2, -28)
+light_color = Color(0.8, 0.95, 1, 1)
+light_energy = 0.95
+omni_range = 15.0
+
+[node name="LabLight2" type="OmniLight3D" parent="ContainmentLab"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35, 5.2, -28)
+light_color = Color(0.8, 0.95, 1, 1)
+light_energy = 0.95
+omni_range = 15.0
+
+[node name="ZombieSpawn_1" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -1)
+
+[node name="ZombieSpawn_2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
+
+[node name="ZombieSpawn_3" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14, 0, -28)
+
+[node name="ZombieSpawn_4" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 0, -28)
+
+[node name="ZombieSpawn_5" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -42)
+
+[node name="ZombieSpawn_6" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 38, 0, -28)

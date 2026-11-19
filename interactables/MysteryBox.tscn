@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3]
+
+[ext_resource type="Script" path="res://interactables/MysteryBox.gd" id="1_kbb7o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_f3wdw"]
+size = Vector3(1.8, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j81xw"]
+albedo_color = Color(0.28, 0.18, 0.12, 1)
+roughness = 0.75
+
+[sub_resource type="BoxMesh" id="BoxMesh_6tv41"]
+size = Vector3(1.7, 0.6, 0.9)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dxeme"]
+albedo_color = Color(0.85, 0.68, 0.22, 1)
+metallic = 0.85
+roughness = 0.3
+
+[sub_resource type="BoxMesh" id="BoxMesh_6nfi3"]
+size = Vector3(1.72, 0.62, 0.08)
+
+[sub_resource type="BoxMesh" id="BoxMesh_qe08j"]
+size = Vector3(1.72, 0.16, 0.92)
+
+[sub_resource type="BoxMesh" id="BoxMesh_osebh"]
+size = Vector3(0.12, 0.24, 0.8)
+
+[node name="MysteryBox" type="StaticBody3D"]
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_kbb7o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_f3wdw")
+
+[node name="BaseCrate" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+material_override = SubResource("StandardMaterial3D_j81xw")
+mesh = SubResource("BoxMesh_6tv41")
+
+[node name="Strap" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3, 0)
+material_override = SubResource("StandardMaterial3D_dxeme")
+mesh = SubResource("BoxMesh_6nfi3")
+
+[node name="LidPivot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.45)
+
+[node name="LidMesh" type="MeshInstance3D" parent="LidPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.08, 0.45)
+material_override = SubResource("StandardMaterial3D_j81xw")
+mesh = SubResource("BoxMesh_qe08j")
+
+[node name="WeaponDisplayRoot" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+visible = false
+
+[node name="DisplayGun" type="MeshInstance3D" parent="WeaponDisplayRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_dxeme")
+mesh = SubResource("BoxMesh_osebh")
+
+[node name="ChestLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+light_color = Color(0.3, 0.85, 1, 1)
+light_energy = 0.6
+omni_range = 4.0
+
+[node name="QuestionMarksLabel" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.35, 0.47)
+modulate = Color(0.3, 0.85, 1, 1)
+text = "?  ?  ?"
+font_size = 48
+outline_size = 8
+
+[node name="PromptLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+modulate = Color(1, 0.85, 0.2, 1)
+text = "MYSTERY BOX
+[E] 950 PTS"
+font_size = 28
+outline_size = 6

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://interactables/AmmoBox.gd" id="1_to3ia"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s5wy6"]
+radius = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ajhg"]
+albedo_color = Color(1, 0.7, 0.1, 1)
+emission_enabled = true
+emission = Color(1, 0.7, 0.1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_omiwh"]
+top_radius = 0.18
+bottom_radius = 0.18
+height = 0.35
+
+[node name="AmmoBox" type="Area3D"]
+script = ExtResource("1_to3ia")
+
+[node name="@CollisionShape3D@6" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s5wy6")
+
+[node name="VisualRoot" type="Node3D" parent="."]
+
+[node name="@MeshInstance3D@7" type="MeshInstance3D" parent="VisualRoot"]
+material_override = SubResource("StandardMaterial3D_1ajhg")
+mesh = SubResource("CylinderMesh_omiwh")

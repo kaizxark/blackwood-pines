@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://interactables/ArmorPack.gd" id="1_a0po2"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s5wy6"]
+radius = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpdbl"]
+albedo_color = Color(0.2, 0.6, 1, 1)
+emission_enabled = true
+emission = Color(0.2, 0.6, 1, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="PrismMesh" id="PrismMesh_ogqi5"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="ArmorPack" type="Area3D"]
+script = ExtResource("1_a0po2")
+shield_amount = 30
+
+[node name="@CollisionShape3D@4" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s5wy6")
+
+[node name="VisualRoot" type="Node3D" parent="."]
+
+[node name="@MeshInstance3D@5" type="MeshInstance3D" parent="VisualRoot"]
+material_override = SubResource("StandardMaterial3D_xpdbl")
+mesh = SubResource("PrismMesh_ogqi5")

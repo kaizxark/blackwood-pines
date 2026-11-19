@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://interactables/HealthPack.gd" id="1_bsf8m"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s5wy6"]
+radius = 0.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl03r"]
+albedo_color = Color(0.1, 1, 0.3, 1)
+emission_enabled = true
+emission = Color(0.1, 1, 0.3, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_p1mbx"]
+size = Vector3(0.4, 0.4, 0.4)
+
+[node name="HealthPack" type="Area3D"]
+script = ExtResource("1_bsf8m")
+heal_amount = 40
+
+[node name="@CollisionShape3D@2" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_s5wy6")
+
+[node name="VisualRoot" type="Node3D" parent="."]
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="VisualRoot"]
+material_override = SubResource("StandardMaterial3D_gl03r")
+mesh = SubResource("BoxMesh_p1mbx")

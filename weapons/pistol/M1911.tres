@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_m1911"]
+
+[resource]
+script = ExtResource("1_m1911")
+weapon_name = "M1911 .45 Tactical"
+weapon_id = "m1911"
+weapon_type_label = "[SEMI-AUTO .45 ACP]"
+damage = 38
+headshot_multiplier = 3.5
+fire_rate_rpm = 450.0
+is_automatic = false
+mag_capacity = 8
+current_ammo_in_mag = 8
+reserve_ammo = 80
+max_reserve_ammo = 120
+reload_time = 1.25
+cost = 0
+ammo_cost = 200
+recoil_rotation_impulse = Vector3(0.09, 0.015, -0.01)
+recoil_position_impulse = Vector3(0.0, 0.02, 0.07)
+spread_angle = 0.006
+pellets_per_shot = 1
+range_distance = 80.0
+fire_sound = "m1911_fire"
+viewmodel_color = Color(0.18, 0.19, 0.22, 1)
+emissive_accent_color = Color(0.1, 0.8, 1, 1)

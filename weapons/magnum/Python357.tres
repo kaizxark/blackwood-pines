@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_python"]
+
+[resource]
+script = ExtResource("1_python")
+weapon_name = "Colt Python .357"
+weapon_id = "python"
+weapon_type_label = "[.357 REVOLVER HANDCANNON]"
+damage = 140
+headshot_multiplier = 4.0
+fire_rate_rpm = 150.0
+is_automatic = false
+mag_capacity = 6
+current_ammo_in_mag = 6
+reserve_ammo = 36
+max_reserve_ammo = 60
+reload_time = 2.4
+cost = 2000
+ammo_cost = 750
+recoil_rotation_impulse = Vector3(0.28, 0.02, -0.01)
+recoil_position_impulse = Vector3(0.0, 0.04, 0.14)
+spread_angle = 0.005
+pellets_per_shot = 1
+range_distance = 150.0
+fire_sound = "magnum_fire"
+viewmodel_color = Color(0.35, 0.38, 0.42, 1)
+emissive_accent_color = Color(1.0, 0.2, 0.2, 1)

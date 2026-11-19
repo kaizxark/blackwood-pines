@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://weapons/base/WeaponResource.gd" id="1_pistol"]
+
+[resource]
+script = ExtResource("1_pistol")
+weapon_name = "P-9 Aegis"
+damage = 32
+fire_rate_rpm = 450.0
+is_automatic = false
+mag_capacity = 12
+current_ammo_in_mag = 12
+reserve_ammo = 72
+max_reserve_ammo = 120
+reload_time = 1.2
+recoil_rotation_impulse = Vector3(0.08, 0.015, -0.01)
+recoil_position_impulse = Vector3(0.0, 0.015, 0.05)
+spread_angle = 0.008
+pellets_per_shot = 1
+range_distance = 120.0
+fire_sound = "pistol_fire"
+viewmodel_color = Color(0.2, 0.22, 0.25, 1)
+emissive_accent_color = Color(0.1, 0.8, 1, 1)

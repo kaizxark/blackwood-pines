@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3]
+
+[ext_resource type="Script" path="res://entities/enemies/drone/DroneEnemy.gd" id="1_qs424"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_21ofy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mhk2"]
+albedo_color = Color(0.2, 0.22, 0.25, 1)
+metallic = 0.8
+
+[sub_resource type="SphereMesh" id="SphereMesh_0miwr"]
+radius = 0.35
+height = 0.7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a0tqf"]
+albedo_color = Color(1, 0.1, 0.1, 1)
+emission_enabled = true
+emission = Color(1, 0.1, 0.1, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_k0rwc"]
+radius = 0.12
+height = 0.24
+
+[node name="DroneEnemy" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_qs424")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_21ofy")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="VisionRay" type="RayCast3D" parent="."]
+collision_mask = 3
+
+[node name="VisualRoot" type="Node3D" parent="."]
+
+[node name="@MeshInstance3D@2" type="MeshInstance3D" parent="VisualRoot"]
+material_override = SubResource("StandardMaterial3D_5mhk2")
+mesh = SubResource("SphereMesh_0miwr")
+
+[node name="@MeshInstance3D@3" type="MeshInstance3D" parent="VisualRoot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.3)
+material_override = SubResource("StandardMaterial3D_a0tqf")
+mesh = SubResource("SphereMesh_k0rwc")

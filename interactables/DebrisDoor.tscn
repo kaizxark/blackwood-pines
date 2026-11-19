@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://interactables/DebrisDoor.gd" id="1_a1r7b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hxsvq"]
+size = Vector3(3.2, 3.2, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kfr5b"]
+albedo_color = Color(0.2, 0.22, 0.24, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_lam6u"]
+size = Vector3(3.2, 3.2, 0.3)
+
+[node name="DebrisDoor" type="StaticBody3D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_a1r7b")
+door_id = "door_atrium"
+cost = 750
+door_name = "Decontamination Air双lock"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+shape = SubResource("BoxShape3D_hxsvq")
+
+[node name="DoorMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+material_override = SubResource("StandardMaterial3D_kfr5b")
+mesh = SubResource("BoxMesh_lam6u")
+
+[node name="PromptLabel3D" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0.22)
+modulate = Color(1, 0.85, 0.2, 1)
+text = "[E] CLEAR DEBRIS / OPEN DOOR
+750 PTS"
+font_size = 28
+outline_size = 6

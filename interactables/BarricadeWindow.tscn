@@ -1,0 +1,104 @@
+[gd_scene load_steps=10 format=3]
+
+[ext_resource type="Script" path="res://interactables/BarricadeWindow.gd" id="1_xeqfl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2rvxw"]
+size = Vector3(1.8, 2.2, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2cus0"]
+albedo_color = Color(0.22, 0.23, 0.25, 1)
+metallic = 0.6
+roughness = 0.6
+
+[sub_resource type="BoxMesh" id="BoxMesh_rompn"]
+size = Vector3(0.18, 2.2, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tgrqi"]
+size = Vector3(1.88, 0.22, 0.35)
+
+[sub_resource type="BoxMesh" id="BoxMesh_avxfn"]
+size = Vector3(1.88, 0.22, 0.4)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5u3ru"]
+albedo_color = Color(0.45, 0.28, 0.14, 1)
+roughness = 0.88
+
+[sub_resource type="BoxMesh" id="BoxMesh_odiq0"]
+size = Vector3(1.68, 0.24, 0.07)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6tdlu"]
+size = Vector3(1.9, 2.2, 1.8)
+
+[node name="BarricadeWindow" type="StaticBody3D"]
+collision_layer = 9
+collision_mask = 0
+script = ExtResource("1_xeqfl")
+window_id = "window_1"
+max_planks = 5
+
+[node name="BarrierCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, 0)
+shape = SubResource("BoxShape3D_2rvxw")
+
+[node name="Frame" type="Node3D" parent="."]
+
+[node name="LeftPost" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.85, 1.1, 0)
+material_override = SubResource("StandardMaterial3D_2cus0")
+mesh = SubResource("BoxMesh_rompn")
+
+[node name="RightPost" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.85, 1.1, 0)
+material_override = SubResource("StandardMaterial3D_2cus0")
+mesh = SubResource("BoxMesh_rompn")
+
+[node name="Header" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1, 0)
+material_override = SubResource("StandardMaterial3D_2cus0")
+mesh = SubResource("BoxMesh_tgrqi")
+
+[node name="Sill" type="MeshInstance3D" parent="Frame"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+material_override = SubResource("StandardMaterial3D_2cus0")
+mesh = SubResource("BoxMesh_avxfn")
+
+[node name="PlanksContainer" type="Node3D" parent="."]
+
+[node name="Plank_1" type="MeshInstance3D" parent="PlanksContainer"]
+transform = Transform3D(0.9992, -0.0399893, 0, 0.0399893, 0.9992, 0, 0, 0, 1, 0, 0.42, 0.04)
+material_override = SubResource("StandardMaterial3D_5u3ru")
+mesh = SubResource("BoxMesh_odiq0")
+
+[node name="Plank_2" type="MeshInstance3D" parent="PlanksContainer"]
+transform = Transform3D(0.998201, 0.059964, 0, -0.059964, 0.998201, 0, 0, 0, 1, 0, 0.76, -0.03)
+material_override = SubResource("StandardMaterial3D_5u3ru")
+mesh = SubResource("BoxMesh_odiq0")
+
+[node name="Plank_3" type="MeshInstance3D" parent="PlanksContainer"]
+transform = Transform3D(0.99955, -0.0299955, 0, 0.0299955, 0.99955, 0, 0, 0, 1, 0, 1.1, 0.05)
+material_override = SubResource("StandardMaterial3D_5u3ru")
+mesh = SubResource("BoxMesh_odiq0")
+
+[node name="Plank_4" type="MeshInstance3D" parent="PlanksContainer"]
+transform = Transform3D(0.99875, 0.0499792, 0, -0.0499792, 0.99875, 0, 0, 0, 1, 0, 1.44, -0.02)
+material_override = SubResource("StandardMaterial3D_5u3ru")
+mesh = SubResource("BoxMesh_odiq0")
+
+[node name="Plank_5" type="MeshInstance3D" parent="PlanksContainer"]
+transform = Transform3D(0.9998, -0.0199987, 0, 0.0199987, 0.9998, 0, 0, 0, 1, 0, 1.78, 0.04)
+material_override = SubResource("StandardMaterial3D_5u3ru")
+mesh = SubResource("BoxMesh_odiq0")
+
+[node name="ZombieTearArea" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="AreaCollision" type="CollisionShape3D" parent="ZombieTearArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1, -0.9)
+shape = SubResource("BoxShape3D_6tdlu")
+
+[node name="OutsideMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.6)
+
+[node name="InsideMarker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.4)
