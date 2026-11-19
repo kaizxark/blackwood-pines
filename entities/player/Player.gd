@@ -512,3 +512,5 @@ func get_aim_assist_target(max_angle_deg: float = 12.0, max_dist: float = 45.0) 
 # ADS transition lerps camera FOV from 75.0 to 54.0 degrees for precision aiming
 
 # Weapon raycast utilizes collision mask 5 (Enemies + World geometry)
+
+# Damage resolution: shield absorbs incoming damage first, overflow reduces health
