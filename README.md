@@ -150,3 +150,29 @@ blackwood-pines/
 Developed for Project Proto-Breach under the MIT License.
 
 <!-- Initial documentation milestone: Complete controls, lore, weapon stats, and rendering architecture -->
+
+---
+
+## 📊 System Requirements & Hardware Benchmarks
+
+| Component | Minimum Specification | Recommended Specification |
+| :--- | :--- | :--- |
+| **OS** | Linux (Ubuntu 22.04+, Debian, Arch, Fedora) | Ubuntu 24.04 LTS (x86_64) |
+| **Processor** | Dual-Core Intel Core i3 / AMD Ryzen 3 | Quad-Core AMD Ryzen 5 / Intel Core i5 |
+| **Memory** | 4 GB RAM | 8+ GB RAM |
+| **Graphics** | Integrated AMD Radeon Vega 8 / Intel UHD 630 | Dedicated GPU (NVIDIA GTX 1060 / AMD RX 580+) |
+| **OpenGL** | OpenGL 3.3 Core Profile | OpenGL 4.6 (Core Profile) Mesa 25+ |
+| **Target FPS** | 60 FPS (Compatibility Mode) | 120+ FPS (High-Fidelity) |
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+**Q: How do I switch weapons in the heat of combat?**  
+A: You can use your mouse scroll wheel, press number keys <kbd>1</kbd> through <kbd>5</kbd>, or hit <kbd>Q</kbd> to quick-switch between your active and previously held weapon.
+
+**Q: Where can I find more ammunition?**  
+A: Wall-Buy chalk stations scattered around the perimeter allow you to purchase fresh reserve ammo for $250\text{ PTS}$ at any time.
+
+**Q: How does zombie decapitation work?**  
+A: Accurate headshots trigger instant decapitation, spawning high-velocity arterial blood fountains and granting maximum score points (+100 PTS).
