@@ -30,3 +30,5 @@ extends Resource
 @export var emissive_accent_color: Color = Color(0.1, 0.7, 1.0)
 
 ## Data resource defining weapon ballistics, audio, recoil, and 3D mesh offsets
+
+# Damage drop-off parameters: maximum effective range before linear damage attenuation
